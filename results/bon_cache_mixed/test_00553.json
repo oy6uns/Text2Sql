@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.Name\nFROM Client c\nJOIN Orders o ON c.IdClient = o.IdClient\nJOIN Books_Order bo ON o.IdOrder = bo.IdOrder\nGROUP BY c.Name\nORDER BY SUM(bo.amount) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show the client name who has the most total amount of books ordered.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Orders ON Client.IdClient = Orders.IdClient\nJOIN Books_Order ON Orders.IdOrder = Books_Order.IdOrder\nGROUP BY Client.IdClient, Client.Name\nORDER BY SUM(Books_Order.amount) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show the client name who has the most total amount of books ordered.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Orders ON Client.IdClient = Orders.IdClient\nJOIN Books_Order ON Orders.IdOrder = Books_Order.IdOrder\nGROUP BY Client.Name\nORDER BY SUM(Books_Order.amount) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show the client name who has the most total amount of books ordered.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Orders ON Client.IdClient = Orders.IdClient\nJOIN Books_Order ON Orders.IdOrder = Books_Order.IdOrder\nGROUP BY Client.IdClient, Client.Name\nORDER BY SUM(Books_Order.amount) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show the client name who has the most total amount of books ordered.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Orders ON Client.IdClient = Orders.IdClient\nJOIN Books_Order ON Orders.IdOrder = Books_Order.IdOrder\nGROUP BY Client.IdClient, Client.Name\nORDER BY SUM(Books_Order.amount) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show the client name who has the most total amount of books ordered.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

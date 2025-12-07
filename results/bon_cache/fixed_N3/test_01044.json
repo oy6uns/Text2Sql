@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT a.name AS affiliation_name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Affiliation a\nJOIN Author_list al ON a.affiliation_id = al.affiliation_id\nGROUP BY a.name\nORDER BY paper_count DESC;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.5,
+    "question": "How many papers has each affiliation published?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2260,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT a.name AS affiliation_name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Affiliation a\nJOIN Author_list al ON a.affiliation_id = al.affiliation_id\nGROUP BY a.name\nORDER BY paper_count DESC;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.5,
+    "question": "How many papers has each affiliation published?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2260,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT a.affiliation_id, aff.name, COUNT(DISTINCT a.paper_id) AS paper_count\nFROM Author_list a\nJOIN Affiliation aff ON a.affiliation_id = aff.affiliation_id\nGROUP BY a.affiliation_id, aff.name\nORDER BY paper_count DESC;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.5,
+    "question": "How many papers has each affiliation published?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2380,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

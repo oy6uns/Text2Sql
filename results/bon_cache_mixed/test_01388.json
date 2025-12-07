@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT l.name AS language, AVG(c.overall_score) AS avg_overall_score\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.name\nORDER BY avg_overall_score DESC;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the official languages sorted in descending order by the average overall scores among countries speaking them.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 10,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT languages.name, AVG(countries.overall_score) AS average_overall_score\nFROM official_languages\nJOIN countries ON official_languages.country_id = countries.id\nJOIN languages ON official_languages.language_id = languages.id\nGROUP BY languages.name\nORDER BY average_overall_score DESC",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the official languages sorted in descending order by the average overall scores among countries speaking them.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 10,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT languages.name, AVG(countries.overall_score) AS avg_overall_score\nFROM official_languages\nJOIN countries ON official_languages.country_id = countries.id\nJOIN languages ON official_languages.language_id = languages.id\nGROUP BY languages.name\nORDER BY avg_overall_score DESC;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the official languages sorted in descending order by the average overall scores among countries speaking them.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 10,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT \n  languages.name, \n  AVG(countries.overall_score) AS avg_overall_score\nFROM \n  languages\nJOIN \n  official_languages ON languages.id = official_languages.language_id\nJOIN \n  countries ON official_languages.country_id = countries.id\nGROUP BY \n  languages.name\nORDER BY \n  avg_overall_score DESC;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the official languages sorted in descending order by the average overall scores among countries speaking them.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 10,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT \n    l.name AS language_name,\n    AVG(c.overall_score) AS avg_overall_score\nFROM \n    languages l\nJOIN \n    official_languages ol ON l.id = ol.language_id\nJOIN \n    countries c ON ol.country_id = c.id\nGROUP BY \n    l.name\nORDER BY \n    avg_overall_score DESC;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the official languages sorted in descending order by the average overall scores among countries speaking them.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 10,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

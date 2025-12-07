@@ -1,0 +1,7 @@
+SELECT Book_Series
+FROM book
+WHERE TRY_TO_NUMBER(Sale_Amount) > 1000
+INTERSECT
+SELECT Book_Series
+FROM book
+WHERE TRY_TO_NUMBER(Sale_Amount) < 500;

@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT date_order_placed\nFROM Orders o\nJOIN Order_Items oi ON o.order_id = oi.order_id\nGROUP BY o.order_id, date_order_placed\nHAVING date_order_placed = (SELECT MIN(date_order_placed) FROM Orders)\n   OR COUNT(oi.order_item_id) > 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "List the dates of the orders which were placed at the earliest time or have more than 1 items.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.user_id = (\n    SELECT user_id\n    FROM User_Searches\n    ORDER BY search_datetime ASC\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Return the age category for the user who made the earliest search.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.user_id = (\n    SELECT user_id\n    FROM User_Searches\n    WHERE search_datetime = (\n        SELECT MIN(search_datetime) FROM User_Searches\n    )\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Return the age category for the user who made the earliest search.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT r.age_category_description\nFROM User_Searches us\nJOIN Users u ON us.user_id = u.user_id\nJOIN Ref_Age_Categories r ON u.age_category_code = r.age_category_code\nWHERE us.search_datetime = (\n    SELECT MIN(search_datetime) FROM User_Searches\n)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Return the age category for the user who made the earliest search.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.user_id = (\n    SELECT user_id\n    FROM User_Searches\n    ORDER BY search_datetime ASC\n    LIMIT 1\n);",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Return the age category for the user who made the earliest search.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nJOIN User_Searches us ON u.user_id = us.user_id\nWHERE us.search_datetime = (\n    SELECT MIN(search_datetime) FROM User_Searches\n)\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Return the age category for the user who made the earliest search.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

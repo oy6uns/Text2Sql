@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.Name\nFROM Package p\nJOIN Client c ON p.Sender = c.AccountNumber\nGROUP BY c.Name\nHAVING COUNT(*) > 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Who sent more than one packages? List the client's name.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Client.Name\nFROM Package\nJOIN Client ON Package.Sender = Client.AccountNumber\nGROUP BY Client.AccountNumber, Client.Name\nHAVING COUNT(*) > 1",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Who sent more than one packages? List the client's name.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Client.Name\nFROM Package\nJOIN Client ON Package.Sender = Client.AccountNumber\nGROUP BY Package.Sender, Client.Name\nHAVING COUNT(*) > 1",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Who sent more than one packages? List the client's name.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Package ON Client.AccountNumber = Package.Sender\nGROUP BY Client.AccountNumber, Client.Name\nHAVING COUNT(*) > 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Who sent more than one packages? List the client's name.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT Client.Name\nFROM Client\nJOIN Package ON Client.AccountNumber = Package.Sender\nGROUP BY Client.AccountNumber, Client.Name\nHAVING COUNT(*) > 1",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Who sent more than one packages? List the client's name.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

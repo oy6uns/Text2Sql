@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT o.IdOrder\nFROM Orders o\nJOIN Books_Order bo1 ON o.IdOrder = bo1.IdOrder\nJOIN Book b1 ON bo1.ISBN = b1.ISBN\nJOIN Books_Order bo2 ON o.IdOrder = bo2.IdOrder\nJOIN Book b2 ON bo2.ISBN = b2.ISBN\nWHERE b1.Title = 'Pride and Prejudice'\n  AND b2.Title = 'The Little Prince'\nGROUP BY o.IdOrder;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show ids for orders including both \"Pride and Prejudice\" and \"The Little Prince\".",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT IdOrder\nFROM Books_Order\nWHERE ISBN IN (\n    SELECT ISBN FROM Book WHERE Title = 'Pride and Prejudice'\n)\nINTERSECT\nSELECT IdOrder\nFROM Books_Order\nWHERE ISBN IN (\n    SELECT ISBN FROM Book WHERE Title = 'The Little Prince'\n);",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show ids for orders including both \"Pride and Prejudice\" and \"The Little Prince\".",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT o.IdOrder\nFROM Orders o\nJOIN Books_Order bo1 ON o.IdOrder = bo1.IdOrder\nJOIN Book b1 ON bo1.ISBN = b1.ISBN AND b1.Title = 'Pride and Prejudice'\nJOIN Books_Order bo2 ON o.IdOrder = bo2.IdOrder\nJOIN Book b2 ON bo2.ISBN = b2.ISBN AND b2.Title = 'The Little Prince'\nGROUP BY o.IdOrder;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show ids for orders including both \"Pride and Prejudice\" and \"The Little Prince\".",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT o.IdOrder\nFROM Orders o\nJOIN Books_Order bo1 ON o.IdOrder = bo1.IdOrder\nJOIN Book b1 ON bo1.ISBN = b1.ISBN\nJOIN Books_Order bo2 ON o.IdOrder = bo2.IdOrder\nJOIN Book b2 ON bo2.ISBN = b2.ISBN\nWHERE b1.Title = 'Pride and Prejudice' AND b2.Title = 'The Little Prince'\nGROUP BY o.IdOrder;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show ids for orders including both \"Pride and Prejudice\" and \"The Little Prince\".",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT IdOrder\nFROM Books_Order\nJOIN Book ON Books_Order.ISBN = Book.ISBN\nWHERE Book.Title IN ('Pride and Prejudice', 'The Little Prince')\nGROUP BY IdOrder\nHAVING COUNT(DISTINCT Book.Title) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Show ids for orders including both \"Pride and Prejudice\" and \"The Little Prince\".",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

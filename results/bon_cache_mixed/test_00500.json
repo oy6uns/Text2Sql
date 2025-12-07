@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT t.teacher_details\nFROM Teachers t\nJOIN Classes c ON t.teacher_id = c.teacher_id\nJOIN (\n    SELECT student_id\n    FROM Transcripts\n    ORDER BY date_of_transcript\n    LIMIT 1\n) earliest_student ON c.student_id = earliest_student.student_id;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the details of the teachers who have taught the student with the earliest transcript issuance.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT T.teacher_details\nFROM Teachers T\nJOIN Classes C ON T.teacher_id = C.teacher_id\nWHERE C.student_id = (\n    SELECT student_id\n    FROM Transcripts\n    WHERE date_of_transcript = (\n        SELECT MIN(date_of_transcript) FROM Transcripts\n    )\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the details of the teachers who have taught the student with the earliest transcript issuance.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT T.teacher_details\nFROM Transcripts TR\nJOIN Classes C ON TR.student_id = C.student_id\nJOIN Teachers T ON C.teacher_id = T.teacher_id\nWHERE TR.date_of_transcript = (SELECT MIN(date_of_transcript) FROM Transcripts)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the details of the teachers who have taught the student with the earliest transcript issuance.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT t.teacher_details\nFROM Students s\nJOIN Transcripts tr ON s.student_id = tr.student_id\nJOIN Classes c ON s.student_id = c.student_id\nJOIN Teachers t ON c.teacher_id = t.teacher_id\nWHERE tr.date_of_transcript = (\n    SELECT MIN(date_of_transcript) FROM Transcripts\n)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the details of the teachers who have taught the student with the earliest transcript issuance.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT t.teacher_details\nFROM Students s\nJOIN Transcripts tr ON s.student_id = tr.student_id\nJOIN Classes c ON s.student_id = c.student_id\nJOIN Teachers t ON c.teacher_id = t.teacher_id\nWHERE tr.date_of_transcript = (\n    SELECT MIN(date_of_transcript)\n    FROM Transcripts\n)",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the details of the teachers who have taught the student with the earliest transcript issuance.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n  p.product_id, \n  p.product_name, \n  p.product_price, \n  p.product_color\nFROM \n  Products p\nLEFT JOIN \n  Order_Items oi ON p.product_id = oi.product_id\nGROUP BY \n  p.product_id, p.product_name, p.product_price, p.product_color\nHAVING \n  COUNT(oi.order_item_id) <= 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the id, name, price and color of the products which have not been ordered for at least twice?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT p.product_id, p.product_name, p.product_price, p.product_color\nFROM Products p\nLEFT JOIN Order_Items oi ON p.product_id = oi.product_id\nGROUP BY p.product_id, p.product_name, p.product_price, p.product_color\nHAVING COUNT(oi.order_item_id) < 2;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the id, name, price and color of the products which have not been ordered for at least twice?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT product_id, product_name, product_price, product_color\nFROM Products\nWHERE product_id NOT IN (\n    SELECT product_id\n    FROM Order_Items\n    GROUP BY product_id\n    HAVING COUNT(*) >= 2\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the id, name, price and color of the products which have not been ordered for at least twice?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT p.product_id, p.product_name, p.product_price, p.product_color\nFROM Products p\nLEFT JOIN Order_Items oi ON p.product_id = oi.product_id\nGROUP BY p.product_id, p.product_name, p.product_price, p.product_color\nHAVING COUNT(oi.order_item_id) < 2;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the id, name, price and color of the products which have not been ordered for at least twice?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT p.product_id, p.product_name, p.product_price, p.product_color\nFROM Products p\nLEFT JOIN Order_Items oi ON p.product_id = oi.product_id\nGROUP BY p.product_id, p.product_name, p.product_price, p.product_color\nHAVING COUNT(oi.order_item_id) < 2;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the id, name, price and color of the products which have not been ordered for at least twice?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nWHERE a.author_id NOT IN (\n    SELECT al.author_id\n    FROM Author_list al\n    JOIN Paper p ON al.paper_id = p.paper_id\n    WHERE p.venue = 'ACL'\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "What are the names of authors who have not published a paper in ACL?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 15302,
+      "too_many_rows": true,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

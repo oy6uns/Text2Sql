@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Title\nFROM game\nWHERE Game_ID NOT IN (\n    SELECT gp.Game_ID\n    FROM game_player gp\n    JOIN player p ON gp.Player_ID = p.Player_ID\n    WHERE p.Position = 'Guard'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Show the title of games that are not played by any player who is in the Guard position.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Title FROM game WHERE Game_ID NOT IN (SELECT gp.Game_ID FROM game_player gp JOIN player p ON gp.Player_ID = p.Player_ID WHERE p.Position = 'Guard')",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Show the title of games that are not played by any player who is in the Guard position.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Title\nFROM game\nWHERE Game_ID NOT IN (\n  SELECT gp.Game_ID\n  FROM game_player gp\n  JOIN player p ON gp.Player_ID = p.Player_ID\n  WHERE p.Position = 'Guard'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Show the title of games that are not played by any player who is in the Guard position.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT g.Title\nFROM game g\nLEFT JOIN game_player gp ON g.Game_ID = gp.Game_ID\nLEFT JOIN player p ON gp.Player_ID = p.Player_ID AND p.Position = 'Guard'\nWHERE p.Player_ID IS NULL;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Show the title of games that are not played by any player who is in the Guard position.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 14,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT g.Title\nFROM game g\nLEFT JOIN game_player gp ON g.Game_ID = gp.Game_ID\nLEFT JOIN player p ON gp.Player_ID = p.Player_ID AND p.Position = 'Guard'\nWHERE p.Player_ID IS NULL;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Show the title of games that are not played by any player who is in the Guard position.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 14,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

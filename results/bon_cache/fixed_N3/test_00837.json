@@ -1,0 +1,111 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH Linda AS (\n  SELECT S.city_code\n  FROM Student S\n  WHERE S.Fname = 'Linda' AND S.LName = 'Smith'\n), LindaCity AS (\n  SELECT C.latitude, C.longitude, C.city_code\n  FROM City C\n  JOIN Linda L ON C.city_code = L.city_code\n), Distances AS (\n  SELECT \n    S.StuID,\n    S.Fname,\n    S.LName,\n    C.latitude,\n    C.longitude,\n    C.city_code,\n    SQRT(POWER(C.latitude - LC.latitude, 2) + POWER(C.longitude - LC.longitude, 2)) AS dist\n  FROM Student S\n  JOIN City C ON S.city_code = C.city_code\n  CROSS JOIN LindaCity LC\n)\nSELECT Fname, LName\nFROM Distances\nORDER BY dist DESC\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 3.0,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name and last name of the student living furthest to Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "LINDA",
+        "LINDACITY",
+        "DISTANCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH LindaCity AS (\n  SELECT s.city_code\n  FROM Student s\n  WHERE s.Fname = 'Linda' AND s.LName = 'Smith'\n), Distances AS (\n  SELECT s.Fname, s.LName, s.city_code,\n    COALESCE(dd.distance, dd_rev.distance) AS dist\n  FROM Student s\n  CROSS JOIN LindaCity lc\n  LEFT JOIN Direct_distance dd ON dd.city1_code = lc.city_code AND dd.city2_code = s.city_code\n  LEFT JOIN Direct_distance dd_rev ON dd_rev.city1_code = s.city_code AND dd_rev.city2_code = lc.city_code\n  WHERE s.Fname <> 'Linda' OR s.LName <> 'Smith'\n)\nSELECT Fname, LName\nFROM Distances\nORDER BY dist DESC NULLS LAST\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 3.0,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name and last name of the student living furthest to Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "LINDACITY",
+        "DISTANCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH Linda_City AS (\n  SELECT s.city_code\n  FROM Student s\n  WHERE s.Fname = 'Linda' AND s.LName = 'Smith'\n),\nDistances AS (\n  SELECT s.Fname, s.LName, dd.distance\n  FROM Student s\n  JOIN Linda_City lc ON 1=1\n  JOIN Direct_distance dd ON \n    (dd.city1_code = lc.city_code AND dd.city2_code = s.city_code)\n    OR (dd.city2_code = lc.city_code AND dd.city1_code = s.city_code)\n  WHERE NOT (s.Fname = 'Linda' AND s.LName = 'Smith')\n)\nSELECT Fname, LName\nFROM Distances\nORDER BY distance DESC\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 3.0,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name and last name of the student living furthest to Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "LINDA_CITY",
+        "DISTANCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

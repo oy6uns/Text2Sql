@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT c.Name\nFROM channel c\nJOIN director_admin da ON c.Channel_ID = da.Channel_ID\nJOIN director d ON da.Director_ID = d.Director_ID\nGROUP BY c.Channel_ID, c.Name\nHAVING \n    SUM(CASE WHEN d.Age < 40 THEN 1 ELSE 0 END) > 0\n    AND \n    SUM(CASE WHEN d.Age > 60 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "give me the name of channels that have both a director younger than 40 and a director older than 60.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT c.Name\nFROM channel c\nJOIN director_admin da ON c.Channel_ID = da.Channel_ID\nJOIN director d ON da.Director_ID = d.Director_ID\nGROUP BY c.Channel_ID, c.Name\nHAVING \n    SUM(CASE WHEN d.Age < 40 THEN 1 ELSE 0 END) > 0\n    AND\n    SUM(CASE WHEN d.Age > 60 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "give me the name of channels that have both a director younger than 40 and a director older than 60.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT c.Name\nFROM channel c\nJOIN director_admin da ON c.Channel_ID = da.Channel_ID\nJOIN director d ON da.Director_ID = d.Director_ID\nGROUP BY c.Channel_ID, c.Name\nHAVING \n    SUM(CASE WHEN d.Age < 40 THEN 1 ELSE 0 END) > 0\n    AND \n    SUM(CASE WHEN d.Age > 60 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "give me the name of channels that have both a director younger than 40 and a director older than 60.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

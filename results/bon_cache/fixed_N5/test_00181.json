@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT v.Vehicle_ID, v.Model\nFROM vehicle v\nJOIN vehicle_driver vd ON v.Vehicle_ID = vd.Vehicle_ID\nJOIN driver d ON vd.Driver_ID = d.Driver_ID\nGROUP BY v.Vehicle_ID, v.Model\nHAVING COUNT(DISTINCT vd.Driver_ID) > 2\n   OR MAX(CASE WHEN d.Name = 'Jeff Gordon' THEN 1 ELSE 0 END) = 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the vehicle ids and models which have been driven by more than 2 drivers or been driven by the driver named 'Jeff Gordon'?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT v.Vehicle_ID, v.Model\nFROM vehicle v\nJOIN vehicle_driver vd ON v.Vehicle_ID = vd.Vehicle_ID\nJOIN driver d ON vd.Driver_ID = d.Driver_ID\nGROUP BY v.Vehicle_ID, v.Model\nHAVING COUNT(DISTINCT vd.Driver_ID) > 2\n   OR MAX(CASE WHEN d.Name = 'Jeff Gordon' THEN 1 ELSE 0 END) = 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the vehicle ids and models which have been driven by more than 2 drivers or been driven by the driver named 'Jeff Gordon'?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT v.Vehicle_ID, v.Model\nFROM vehicle v\nJOIN vehicle_driver vd ON v.Vehicle_ID = vd.Vehicle_ID\nJOIN driver d ON vd.Driver_ID = d.Driver_ID\nGROUP BY v.Vehicle_ID, v.Model\nHAVING COUNT(DISTINCT vd.Driver_ID) > 2\n   OR MAX(CASE WHEN d.Name = 'Jeff Gordon' THEN 1 ELSE 0 END) = 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the vehicle ids and models which have been driven by more than 2 drivers or been driven by the driver named 'Jeff Gordon'?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT v.Vehicle_ID, v.Model\nFROM vehicle v\nJOIN vehicle_driver vd ON v.Vehicle_ID = vd.Vehicle_ID\nJOIN driver d ON vd.Driver_ID = d.Driver_ID\nGROUP BY v.Vehicle_ID, v.Model\nHAVING COUNT(DISTINCT vd.Driver_ID) > 2\n   OR MAX(CASE WHEN d.Name = 'Jeff Gordon' THEN 1 ELSE 0 END) = 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the vehicle ids and models which have been driven by more than 2 drivers or been driven by the driver named 'Jeff Gordon'?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT v.Vehicle_ID, v.Model\nFROM vehicle v\nJOIN vehicle_driver vd ON v.Vehicle_ID = vd.Vehicle_ID\nJOIN driver d ON vd.Driver_ID = d.Driver_ID\nGROUP BY v.Vehicle_ID, v.Model\nHAVING COUNT(DISTINCT vd.Driver_ID) > 2\n   OR MAX(CASE WHEN d.Name = 'Jeff Gordon' THEN 1 ELSE 0 END) = 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the vehicle ids and models which have been driven by more than 2 drivers or been driven by the driver named 'Jeff Gordon'?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

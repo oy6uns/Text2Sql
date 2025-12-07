@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT CONCAT(s.Fname, ' ', s.LName) AS full_name\nFROM Student s\nJOIN City c ON s.city_code = c.city_code\nJOIN Student ls ON ls.Fname = 'Linda' AND ls.LName = 'Smith'\nJOIN City lc ON ls.city_code = lc.city_code\nLEFT JOIN Direct_distance dd ON \n    (dd.city1_code = lc.city_code AND dd.city2_code = c.city_code) OR\n    (dd.city2_code = lc.city_code AND dd.city1_code = c.city_code)\nORDER BY dd.distance DESC NULLS LAST\nLIMIT 1;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What is the full name of the student who lives furthest from Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT s.Fname || ' ' || s.LName AS full_name\nFROM Student s\nJOIN City c ON s.city_code = c.city_code\nJOIN Student ls ON ls.Fname = 'Linda' AND ls.LName = 'Smith'\nJOIN City lc ON ls.city_code = lc.city_code\nLEFT JOIN Direct_distance dd ON \n    (dd.city1_code = c.city_code AND dd.city2_code = lc.city_code) OR\n    (dd.city2_code = c.city_code AND dd.city1_code = lc.city_code)\nORDER BY dd.distance DESC NULLS LAST\nLIMIT 1;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What is the full name of the student who lives furthest from Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT CONCAT(s.Fname, ' ', s.LName) AS full_name\nFROM Student s\nJOIN City c ON s.city_code = c.city_code\nJOIN Student ls ON ls.Fname = 'Linda' AND ls.LName = 'Smith'\nJOIN City lc ON ls.city_code = lc.city_code\nLEFT JOIN Direct_distance dd ON \n    ( (dd.city1_code = c.city_code AND dd.city2_code = lc.city_code) OR \n      (dd.city2_code = c.city_code AND dd.city1_code = lc.city_code) )\nORDER BY dd.distance DESC\nLIMIT 1;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What is the full name of the student who lives furthest from Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

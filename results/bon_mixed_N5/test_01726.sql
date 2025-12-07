@@ -1,0 +1,1 @@
+SELECT DISTINCT Contents FROM Boxes ORDER BY Contents ASC;

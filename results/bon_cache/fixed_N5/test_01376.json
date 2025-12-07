@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.name AS country_name, l.name AS language_name\nFROM countries c\nJOIN official_languages ol ON c.id = ol.country_id\nJOIN languages l ON ol.language_id = l.id;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of countries and their official languages.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT c.name AS country_name, l.name AS language_name\nFROM countries c\nJOIN official_languages ol ON c.id = ol.country_id\nJOIN languages l ON ol.language_id = l.id;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of countries and their official languages.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT c.name AS country_name, l.name AS language_name\nFROM countries c\nJOIN official_languages ol ON c.id = ol.country_id\nJOIN languages l ON ol.language_id = l.id;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of countries and their official languages.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT c.name AS country_name, l.name AS language_name\nFROM countries c\nJOIN official_languages ol ON c.id = ol.country_id\nJOIN languages l ON ol.language_id = l.id;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of countries and their official languages.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT countries.name AS country_name, languages.name AS language_name\nFROM countries\nJOIN official_languages ON countries.id = official_languages.country_id\nJOIN languages ON official_languages.language_id = languages.id;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of countries and their official languages.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

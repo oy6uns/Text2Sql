@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT name\nFROM Sailors\nWHERE rating > ALL (\n    SELECT S2.rating\n    FROM Sailors S2\n    JOIN Reserves R ON S2.sid = R.sid\n    JOIN Boats B ON R.bid = B.bid\n    WHERE B.color = 'red'\n)",
+    "score": -95.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "Find the names of sailors whose rating is larger than the rating of all sailors who booked a red boat.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ALL\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT name\nFROM Sailors\nWHERE rating > ALL (\n    SELECT S2.rating\n    FROM Sailors S2\n    JOIN Reserves R ON S2.sid = R.sid\n    JOIN Boats B ON R.bid = B.bid\n    WHERE B.color = 'red'\n)",
+    "score": -95.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "Find the names of sailors whose rating is larger than the rating of all sailors who booked a red boat.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ALL\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT name\nFROM Sailors\nWHERE rating > ALL (\n    SELECT S2.rating\n    FROM Sailors S2\n    JOIN Reserves R ON S2.sid = R.sid\n    JOIN Boats B ON R.bid = B.bid\n    WHERE B.color = 'red'\n)",
+    "score": -95.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "Find the names of sailors whose rating is larger than the rating of all sailors who booked a red boat.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ALL\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

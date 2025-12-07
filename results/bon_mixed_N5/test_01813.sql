@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Movie) FROM MovieTheaters;

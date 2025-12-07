@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT name FROM languages WHERE id NOT IN (SELECT language_id FROM official_languages);",
+    "score": 2.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": -1.0,
+    "question": "List the names of languages that are not the official language of any countries.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

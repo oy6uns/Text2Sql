@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT d1.Owner\nFROM Document_Objects d1\nJOIN Document_Subset_Members dsm ON d1.Document_Object_ID = dsm.Document_Object_ID\nJOIN Document_Objects d2 ON dsm.Related_Document_Object_ID = d2.Document_Object_ID\nWHERE d2.Owner = 'Braeden'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "List all owner of documents that is related to documents owned by Braeden.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

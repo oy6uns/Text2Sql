@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT first_name\nFROM Users\nWHERE user_id = (\n    SELECT owner_user_id\n    FROM Properties\n    GROUP BY owner_user_id\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name of the user who owns the greatest number of properties?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT first_name\nFROM Users\nWHERE user_id = (\n    SELECT owner_user_id\n    FROM Properties\n    GROUP BY owner_user_id\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name of the user who owns the greatest number of properties?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT first_name\nFROM Users\nWHERE user_id = (\n    SELECT owner_user_id\n    FROM Properties\n    GROUP BY owner_user_id\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name of the user who owns the greatest number of properties?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

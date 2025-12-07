@@ -1,0 +1,1 @@
+SELECT datetime_detention_start FROM Detention ORDER BY datetime_detention_start;

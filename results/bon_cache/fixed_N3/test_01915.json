@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT p.PackageNumber\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nJOIN Planet pl ON s.Planet = pl.PlanetID\nLEFT JOIN Client sender ON p.Sender = sender.AccountNumber\nLEFT JOIN Client recipient ON p.Recipient = recipient.AccountNumber\nLEFT JOIN Employee e ON e.Name = 'Zapp Brannigan'\nJOIN Client c ON (p.Sender = c.AccountNumber OR p.Recipient = c.AccountNumber)\nWHERE pl.Name = 'Omicron Persei 8'\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       JOIN Package pk ON pk.Sender = c.AccountNumber\n       JOIN Shipment sh ON pk.Shipment = sh.ShipmentID\n       JOIN Employee em ON em.EmployeeID = sh.Manager\n       WHERE em.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       WHERE EXISTS (\n           SELECT 1 FROM Employee em WHERE em.Name = 'Zapp Brannigan'\n       )\n   )\n   OR EXISTS (\n       SELECT 1 FROM Employee em WHERE em.Name = 'Zapp Brannigan'\n   );",
+    "score": 4.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT p.PackageNumber\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nLEFT JOIN Employee e ON p.Sender = e.EmployeeID\nLEFT JOIN Client c_sender ON p.Sender = c_sender.AccountNumber\nLEFT JOIN Client c_recipient ON p.Recipient = c_recipient.AccountNumber\nLEFT JOIN Employee sender_emp ON p.Sender = sender_emp.EmployeeID\nWHERE s.Planet = (SELECT PlanetID FROM Planet WHERE Name = 'Omicron Persei 8')\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       JOIN Employee e ON e.Name = 'Zapp Brannigan'\n       WHERE c.AccountNumber = p.Sender\n   )\n   OR EXISTS (\n       SELECT 1 FROM Employee e WHERE e.Name = 'Zapp Brannigan' AND p.Sender = e.EmployeeID\n   )\n\n-- Correction: Since Sender is a Client.AccountNumber, and Zapp Brannigan is an Employee, the \"sent by Zapp Brannigan\" means the sender client is Zapp Brannigan?\n\n-- But Zapp Brannigan is an Employee, and Sender is a Client.AccountNumber. So \"sent by Zapp Brannigan\" means packages where the sender is a client whose name is Zapp Brannigan? But Zapp Brannigan is an Employee.\n\n-- So \"sent by Zapp Brannigan\" likely means packages where the sender is a Client that corresponds to Zapp Brannigan (which is an Employee). But no link between Employee and Client.\n\n-- So likely \"sent by Zapp Brannigan\" means packages where the sender is a client with the same name as 'Zapp Brannigan'.\n\n-- So we need to find Client.Name = 'Zapp Brannigan'.\n\n-- So the corrected query:\n\nSELECT DISTINCT p.PackageNumber\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nLEFT JOIN Planet pl ON s.Planet = pl.PlanetID\nLEFT JOIN Client c_sender ON p.Sender = c_sender.AccountNumber\nWHERE pl.Name = 'Omicron Persei 8'\n   OR c_sender.Name = 'Zapp Brannigan'",
+    "score": -96.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": -100.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT p.PackageNumber\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nJOIN Planet pl ON s.Planet = pl.PlanetID\nLEFT JOIN Client sender ON p.Sender = sender.AccountNumber\nLEFT JOIN Client recipient ON p.Recipient = recipient.AccountNumber\nLEFT JOIN Employee e ON e.Name = 'Zapp Brannigan'\nLEFT JOIN Package p2 ON p2.Sender = sender.AccountNumber\nWHERE pl.Name = 'Omicron Persei 8'\n   OR p.Sender IN (\n       SELECT a.AccountNumber\n       FROM Client a\n       JOIN Package pk ON pk.Sender = a.AccountNumber\n       JOIN Employee e ON e.EmployeeID = (\n           SELECT EmployeeID FROM Employee WHERE Name = 'Zapp Brannigan' LIMIT 1\n       )\n       WHERE e.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT AccountNumber FROM Client WHERE Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Employee e ON e.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM Package p\n       JOIN Client c ON p.Sender = c.AccountNumber\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT p.Sender FROM",
+    "score": -98.5,
+    "syntax_score": 0.5,
+    "schema_score": 1.0,
+    "execution_score": -100.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 0.5,
+      "missing_quote": false,
+      "paren_unbalanced": true,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "incomplete input",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

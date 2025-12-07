@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.Name, COALESCE(pkg_counts.PackageCount, 0) AS NumberOfPackagesReceived\nFROM Client c\nLEFT JOIN (\n    SELECT Recipient, COUNT(*) AS PackageCount\n    FROM Package\n    GROUP BY Recipient\n) pkg_counts ON c.AccountNumber = pkg_counts.Recipient\nWHERE COALESCE(pkg_counts.PackageCount, 0) = (\n    SELECT MIN(pkg_count)\n    FROM (\n        SELECT COUNT(*) AS pkg_count\n        FROM Package\n        GROUP BY Recipient\n        UNION ALL\n        SELECT 0\n        FROM Client c2\n        LEFT JOIN Package p2 ON c2.AccountNumber = p2.Recipient\n        WHERE p2.Recipient IS NULL\n    )\n)",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

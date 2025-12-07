@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT a.artistID, a.fname, a.lname, COUNT(p.paintingID) AS oil_paintings_count\nFROM Artists a\nJOIN Paintings p ON a.artistID = p.painterID\nWHERE LOWER(p.medium) LIKE '%oil%'\nGROUP BY a.artistID, a.fname, a.lname\nHAVING COUNT(p.paintingID) = (\n    SELECT MAX(oil_count) FROM (\n        SELECT COUNT(p2.paintingID) AS oil_count\n        FROM Artists a2\n        JOIN Paintings p2 ON a2.artistID = p2.painterID\n        WHERE LOWER(p2.medium) LIKE '%oil%'\n        GROUP BY a2.artistID\n    ) sub\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT a.artistID, a.fname, a.lname, COUNT(p.paintingID) AS oil_painting_count\nFROM Artists a\nJOIN Paintings p ON a.artistID = p.painterID\nWHERE LOWER(p.medium) LIKE '%oil%'\nGROUP BY a.artistID, a.fname, a.lname\nHAVING COUNT(p.paintingID) = (\n    SELECT MAX(oil_count) FROM (\n        SELECT COUNT(p2.paintingID) AS oil_count\n        FROM Artists a2\n        JOIN Paintings p2 ON a2.artistID = p2.painterID\n        WHERE LOWER(p2.medium) LIKE '%oil%'\n        GROUP BY a2.artistID\n    ) sub\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT a.artistID, a.fname, a.lname, COUNT(p.paintingID) AS oil_paintings_count\nFROM Artists a\nJOIN Paintings p ON a.artistID = p.painterID\nWHERE LOWER(p.medium) LIKE '%oil%'\nGROUP BY a.artistID, a.fname, a.lname\nHAVING COUNT(p.paintingID) = (\n    SELECT MAX(oil_count) FROM (\n        SELECT COUNT(p2.paintingID) AS oil_count\n        FROM Artists a2\n        JOIN Paintings p2 ON a2.artistID = p2.painterID\n        WHERE LOWER(p2.medium) LIKE '%oil%'\n        GROUP BY a2.artistID\n    )\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

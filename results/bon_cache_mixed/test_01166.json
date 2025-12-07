@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT plane_name, COUNT(pilot_name) AS num_pilots\nFROM PilotSkills\nGROUP BY plane_name\nHAVING AVG(age) < 35;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different plane names of planes with an average pilot age of below 35, and how many pilots have flown each of them?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT plane_name, COUNT(pilot_name) AS num_pilots\nFROM PilotSkills\nGROUP BY plane_name\nHAVING AVG(age) < 35;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different plane names of planes with an average pilot age of below 35, and how many pilots have flown each of them?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT plane_name, COUNT(pilot_name) AS num_pilots\nFROM PilotSkills\nGROUP BY plane_name\nHAVING AVG(age) < 35;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different plane names of planes with an average pilot age of below 35, and how many pilots have flown each of them?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT \n    ps.plane_name, \n    COUNT(ps.pilot_name) AS num_pilots\nFROM \n    PilotSkills ps\nGROUP BY \n    ps.plane_name\nHAVING \n    AVG(ps.age) < 35;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different plane names of planes with an average pilot age of below 35, and how many pilots have flown each of them?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT PilotSkills.plane_name, COUNT(DISTINCT PilotSkills.pilot_name) AS num_pilots\nFROM PilotSkills\nGROUP BY PilotSkills.plane_name\nHAVING AVG(PilotSkills.age) < 35;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different plane names of planes with an average pilot age of below 35, and how many pilots have flown each of them?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

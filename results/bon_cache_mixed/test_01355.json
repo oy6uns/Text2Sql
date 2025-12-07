@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT d1.Driver_Name\nFROM driver d1\nJOIN race r1 ON d1.Driver_ID = r1.Driver_ID\nJOIN race r2 ON d1.Driver_ID = r2.Driver_ID\nWHERE r1.Pole_Position = 'James Hinchcliffe'\n  AND r2.Pole_Position = 'Carl Skerlong'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of drivers who had both the pole position James Hinchcliffe and the pole position Carl Skerlong?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT d.Driver_Name\nFROM driver d\nJOIN race r1 ON d.Driver_ID = r1.Driver_ID AND r1.Pole_Position = 'James Hinchcliffe'\nJOIN race r2 ON d.Driver_ID = r2.Driver_ID AND r2.Pole_Position = 'Carl Skerlong';",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of drivers who had both the pole position James Hinchcliffe and the pole position Carl Skerlong?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Driver_Name\nFROM driver\nWHERE Driver_ID IN (\n    SELECT Driver_ID\n    FROM race\n    WHERE Pole_Position = 'James Hinchcliffe'\n)\nAND Driver_ID IN (\n    SELECT Driver_ID\n    FROM race\n    WHERE Pole_Position = 'Carl Skerlong'\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of drivers who had both the pole position James Hinchcliffe and the pole position Carl Skerlong?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT d1.Driver_Name\nFROM race r1\nJOIN driver d1 ON r1.Driver_ID = d1.Driver_ID\nJOIN race r2 ON r1.Driver_ID = r2.Driver_ID\nWHERE r1.Pole_Position = 'James Hinchcliffe'\n  AND r2.Pole_Position = 'Carl Skerlong'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of drivers who had both the pole position James Hinchcliffe and the pole position Carl Skerlong?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT d1.Driver_Name\nFROM race r1\nJOIN driver d1 ON r1.Driver_ID = d1.Driver_ID\nJOIN race r2 ON r1.Driver_ID = r2.Driver_ID\nWHERE r1.Pole_Position = 'James Hinchcliffe'\n  AND r2.Pole_Position = 'Carl Skerlong'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of drivers who had both the pole position James Hinchcliffe and the pole position Carl Skerlong?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT cs.Collection_Subset_ID, cs.Collection_Subset_Name, COUNT(DISTINCT csm.Collection_ID) AS number_of_collections\nFROM Collection_Subsets cs\nLEFT JOIN Collection_Subset_Members csm ON cs.Collection_Subset_ID = csm.Collection_Subset_ID\nGROUP BY cs.Collection_Subset_ID, cs.Collection_Subset_Name;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the collection subset ids, names, and number of collections for each subset?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n  cs.Collection_Subset_ID, \n  cs.Collection_Subset_Name, \n  COUNT(csm.Collection_ID) AS number_of_collections\nFROM \n  Collection_Subsets cs\nLEFT JOIN \n  Collection_Subset_Members csm ON cs.Collection_Subset_ID = csm.Collection_Subset_ID\nGROUP BY \n  cs.Collection_Subset_ID, \n  cs.Collection_Subset_Name;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the collection subset ids, names, and number of collections for each subset?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n  Collection_Subsets.Collection_Subset_ID, \n  Collection_Subsets.Collection_Subset_Name, \n  COUNT(DISTINCT Collection_Subset_Members.Collection_ID) AS Number_of_Collections\nFROM Collection_Subsets\nLEFT JOIN Collection_Subset_Members ON Collection_Subsets.Collection_Subset_ID = Collection_Subset_Members.Collection_Subset_ID\nGROUP BY \n  Collection_Subsets.Collection_Subset_ID, \n  Collection_Subsets.Collection_Subset_Name;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the collection subset ids, names, and number of collections for each subset?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT \n  cs.Collection_Subset_ID, \n  cs.Collection_Subset_Name, \n  COUNT(DISTINCT csm.Collection_ID) AS number_of_collections\nFROM \n  Collection_Subsets cs\nLEFT JOIN \n  Collection_Subset_Members csm \n  ON cs.Collection_Subset_ID = csm.Collection_Subset_ID\nGROUP BY \n  cs.Collection_Subset_ID, \n  cs.Collection_Subset_Name;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the collection subset ids, names, and number of collections for each subset?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT \n  Collection_Subsets.Collection_Subset_ID, \n  Collection_Subsets.Collection_Subset_Name, \n  COUNT(Collection_Subset_Members.Collection_ID) AS Number_of_Collections\nFROM \n  Collection_Subsets\nLEFT JOIN \n  Collection_Subset_Members \nON \n  Collection_Subsets.Collection_Subset_ID = Collection_Subset_Members.Collection_Subset_ID\nGROUP BY \n  Collection_Subsets.Collection_Subset_ID, \n  Collection_Subsets.Collection_Subset_Name\nORDER BY \n  Collection_Subsets.Collection_Subset_ID;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "What are the collection subset ids, names, and number of collections for each subset?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": true,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

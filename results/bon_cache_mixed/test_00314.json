@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT co.order_id, co.order_date\nFROM Customer_Orders co\nJOIN Order_Items oi ON co.order_id = oi.order_id\nWHERE CAST(oi.order_quantity AS INTEGER) > 6\nOR co.order_id IN (\n    SELECT order_id\n    FROM Order_Items\n    GROUP BY order_id\n    HAVING COUNT(DISTINCT product_id) > 3\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the order ids and corresponding order dates for orders with a quantity greater than 6 or consisting of more than 3 products?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT co.order_id, co.order_date\nFROM Customer_Orders co\nJOIN Order_Items oi ON co.order_id = oi.order_id\nGROUP BY co.order_id, co.order_date\nHAVING MAX(CAST(oi.order_quantity AS INT)) > 6 OR COUNT(oi.product_id) > 3;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the order ids and corresponding order dates for orders with a quantity greater than 6 or consisting of more than 3 products?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT co.order_id, co.order_date\nFROM Customer_Orders co\nJOIN Order_Items oi ON co.order_id = oi.order_id\nGROUP BY co.order_id, co.order_date\nHAVING MAX(CAST(oi.order_quantity AS INTEGER)) > 6 OR COUNT(DISTINCT oi.product_id) > 3;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the order ids and corresponding order dates for orders with a quantity greater than 6 or consisting of more than 3 products?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT co.order_id, co.order_date\nFROM Customer_Orders co\nJOIN Order_Items oi ON co.order_id = oi.order_id\nGROUP BY co.order_id, co.order_date\nHAVING MAX(CAST(oi.order_quantity AS INTEGER)) > 6 OR COUNT(oi.product_id) > 3;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the order ids and corresponding order dates for orders with a quantity greater than 6 or consisting of more than 3 products?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT co.order_id, co.order_date\nFROM Customer_Orders co\nJOIN Order_Items oi ON co.order_id = oi.order_id\nGROUP BY co.order_id, co.order_date\nHAVING MAX(CAST(oi.order_quantity AS INTEGER)) > 6 OR COUNT(oi.product_id) > 3",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the order ids and corresponding order dates for orders with a quantity greater than 6 or consisting of more than 3 products?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

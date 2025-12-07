@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c1.city_name AS Linda_City, c2.city_name AS Tracy_City, dd.distance\nFROM Student s1\nJOIN City c1 ON s1.city_code = c1.city_code\nJOIN Student s2 ON s2.city_code = c2.city_code\nJOIN City c2 ON s2.city_code = c2.city_code\nJOIN Direct_distance dd ON \n  (dd.city1_code = c1.city_code AND dd.city2_code = c2.city_code)\n  OR\n  (dd.city1_code = c2.city_code AND dd.city2_code = c1.city_code)\nWHERE s1.Fname = 'Linda' AND s1.LName = 'Smith'\n  AND s2.Fname = 'Tracy' AND s2.LName = 'Kim';",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "How far do Linda (first name) Smith (last name) and Tracy (first name) Kim (last name) live?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

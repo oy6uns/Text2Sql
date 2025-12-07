@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.Name AS Press_Name, COUNT(*) AS Number_of_Books_Sold_Over_1000\nFROM book b\nJOIN press p ON b.Press_ID = p.Press_ID\nWHERE TRY_TO_NUMBER(b.Sale_Amount) > 1000\nGROUP BY p.Name;",
+    "score": -96.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the number of books that are sold more than 1000 for each publisher. List the press name as well.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: TRY_TO_NUMBER",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,4 @@
+SELECT Contents
+FROM Boxes
+ORDER BY Value DESC
+LIMIT 1;

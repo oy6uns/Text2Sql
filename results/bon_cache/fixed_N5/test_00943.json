@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Name FROM store ORDER BY Date_Opened;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Sort all store names by store open date.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 9,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Name FROM store ORDER BY Date_Opened;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Sort all store names by store open date.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 9,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Name FROM store ORDER BY Date_Opened;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Sort all store names by store open date.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 9,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT Name FROM store ORDER BY TO_DATE(Date_Opened, 'YYYY-MM-DD');",
+    "score": -96.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": -100.0,
+    "question": "Sort all store names by store open date.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: TO_DATE",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT Name FROM store ORDER BY TO_DATE(Date_Opened, 'YYYY-MM-DD');",
+    "score": -96.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": -100.0,
+    "question": "Sort all store names by store open date.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: TO_DATE",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

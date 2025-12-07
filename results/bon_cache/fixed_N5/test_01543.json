@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'apple' AND g.Food = 'pie'\n   OR r.CustomerId = 12;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts in which either apple flavor pie was bought or customer id 12 shopped.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'apple' AND g.Food = 'pie'\n   OR r.CustomerId = 12;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts in which either apple flavor pie was bought or customer id 12 shopped.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'apple' AND g.Food = 'pie'\n   OR r.CustomerId = 12;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts in which either apple flavor pie was bought or customer id 12 shopped.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'apple' AND g.Food = 'pie'\n   OR r.CustomerId = 12;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts in which either apple flavor pie was bought or customer id 12 shopped.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nJOIN items i ON r.ReceiptNumber = i.Receipt\nJOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'apple' AND g.Food = 'pie'\n   OR r.CustomerId = 12;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find all receipts in which either apple flavor pie was bought or customer id 12 shopped.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

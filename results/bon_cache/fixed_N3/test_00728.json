@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT\n    c.Collection_ID,\n    c.Collection_Name,\n    COUNT(dic.Document_Object_ID) AS document_count\nFROM\n    Collections c\n    LEFT JOIN Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nWHERE\n    c.Collection_Name = 'Best'\nGROUP BY\n    c.Collection_ID,\n    c.Collection_Name\nORDER BY\n    document_count DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "For ever collection named 'Best', what is the name and id of the one with the most documents, and how many documents does it have?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n    c.Collection_ID, \n    c.Collection_Name, \n    COUNT(dic.Document_Object_ID) AS Document_Count\nFROM \n    Collections c\nLEFT JOIN \n    Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nWHERE \n    c.Collection_Name = 'Best'\nGROUP BY \n    c.Collection_ID, c.Collection_Name\nORDER BY \n    Document_Count DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "For ever collection named 'Best', what is the name and id of the one with the most documents, and how many documents does it have?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n    c.Collection_ID, \n    c.Collection_Name, \n    COUNT(dic.Document_Object_ID) AS Document_Count\nFROM \n    Collections c\nLEFT JOIN \n    Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nWHERE \n    c.Collection_Name = 'Best'\nGROUP BY \n    c.Collection_ID, c.Collection_Name\nORDER BY \n    Document_Count DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "For ever collection named 'Best', what is the name and id of the one with the most documents, and how many documents does it have?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

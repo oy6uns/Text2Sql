@@ -1,0 +1,5 @@
+SELECT state
+FROM university
+GROUP BY state
+ORDER BY COUNT(*) DESC
+LIMIT 1;

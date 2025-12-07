@@ -1,0 +1,3 @@
+SELECT DISTINCT ds.Document_Subset_Name
+FROM Document_Subsets ds
+JOIN Document_Subset_Members dsm ON ds.Document_Subset_ID = dsm.Document_Subset_ID;

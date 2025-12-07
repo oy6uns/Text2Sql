@@ -1,0 +1,1 @@
+SELECT Name FROM spokesman ORDER BY Age DESC LIMIT 1;

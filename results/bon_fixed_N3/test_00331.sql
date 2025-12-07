@@ -1,0 +1,4 @@
+SELECT Name 
+FROM region 
+ORDER BY Area DESC 
+LIMIT 5;

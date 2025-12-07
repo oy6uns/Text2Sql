@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al ON p.paper_id = al.paper_id\nJOIN Author a ON al.author_id = a.author_id\nWHERE a.name = 'Mckeown'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all papers with titles and paper IDs written by Mckeown.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al ON p.paper_id = al.paper_id\nJOIN Author a ON al.author_id = a.author_id\nWHERE a.name = 'Mckeown'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all papers with titles and paper IDs written by Mckeown.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Paper.paper_id, Paper.title\nFROM Paper\nJOIN Author_list ON Paper.paper_id = Author_list.paper_id\nJOIN Author ON Author_list.author_id = Author.author_id\nWHERE Author.name = 'Mckeown';",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all papers with titles and paper IDs written by Mckeown.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

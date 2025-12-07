@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT b.ISBN\nFROM Books_Order b\nJOIN Orders o ON b.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name IN ('Peter Doe', 'James Smith')\nGROUP BY b.ISBN\nHAVING COUNT(DISTINCT c.Name) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Show all book isbns which were ordered by both client Peter Doe and client James Smith.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT b.ISBN\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name IN ('Peter Doe', 'James Smith')\nGROUP BY b.ISBN\nHAVING COUNT(DISTINCT c.Name) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Show all book isbns which were ordered by both client Peter Doe and client James Smith.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT b.ISBN\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name IN ('Peter Doe', 'James Smith')\nGROUP BY b.ISBN\nHAVING COUNT(DISTINCT c.Name) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Show all book isbns which were ordered by both client Peter Doe and client James Smith.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

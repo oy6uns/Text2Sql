@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n  c.Collection_Name, \n  c.Collection_ID, \n  COUNT(dic.Document_Object_ID) AS Number_of_Documents\nFROM \n  Collections c\nJOIN \n  Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nGROUP BY \n  c.Collection_Name, c.Collection_ID\nORDER BY \n  Number_of_Documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which collection have most number of documents? List collection name, id and number of documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT c.Collection_ID, c.Collection_Name, COUNT(dic.Document_Object_ID) AS number_of_documents\nFROM Collections c\nJOIN Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nGROUP BY c.Collection_ID, c.Collection_Name\nORDER BY number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which collection have most number of documents? List collection name, id and number of documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT c.Collection_Name, c.Collection_ID, COUNT(d.Document_Object_ID) AS number_of_documents\nFROM Collections c\nJOIN Documents_in_Collections d ON c.Collection_ID = d.Collection_ID\nGROUP BY c.Collection_Name, c.Collection_ID\nORDER BY number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which collection have most number of documents? List collection name, id and number of documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT c.Collection_Name, c.Collection_ID, COUNT(dic.Document_Object_ID) AS Number_of_Documents\nFROM Collections c\nJOIN Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nGROUP BY c.Collection_Name, c.Collection_ID\nORDER BY Number_of_Documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which collection have most number of documents? List collection name, id and number of documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT c.Collection_Name, c.Collection_ID, COUNT(d.Document_Object_ID) AS Number_of_Documents\nFROM Collections c\nJOIN Documents_in_Collections d ON c.Collection_ID = d.Collection_ID\nGROUP BY c.Collection_Name, c.Collection_ID\nORDER BY Number_of_Documents DESC\nFETCH FIRST 1 ROW ONLY;",
+    "score": -96.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Which collection have most number of documents? List collection name, id and number of documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FETCH\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

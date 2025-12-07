@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nWHERE l.id IN (\n    SELECT language_id\n    FROM official_languages ol1\n    JOIN countries c1 ON ol1.country_id = c1.id\n    WHERE c1.overall_score > 95\n)\nAND l.id IN (\n    SELECT language_id\n    FROM official_languages ol2\n    JOIN countries c2 ON ol2.country_id = c2.id\n    WHERE c2.overall_score < 90\n)\nGROUP BY l.name;",
+    "score": 4.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "Show the names of languages that are the official language for both countries with overall score greater than 95 and countries with overall score less than than 90.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT l.name\nFROM languages l\nJOIN official_languages ol_high ON l.id = ol_high.language_id\nJOIN countries c_high ON ol_high.country_id = c_high.id AND c_high.overall_score > 95\nJOIN official_languages ol_low ON l.id = ol_low.language_id\nJOIN countries c_low ON ol_low.country_id = c_low.id AND c_low.overall_score < 90;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of languages that are the official language for both countries with overall score greater than 95 and countries with overall score less than than 90.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT l.name\nFROM languages l\nJOIN official_languages ol1 ON l.id = ol1.language_id\nJOIN countries c1 ON ol1.country_id = c1.id AND c1.overall_score > 95\nJOIN official_languages ol2 ON l.id = ol2.language_id\nJOIN countries c2 ON ol2.country_id = c2.id AND c2.overall_score < 90;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of languages that are the official language for both countries with overall score greater than 95 and countries with overall score less than than 90.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol1 ON l.id = ol1.language_id\nJOIN countries c1 ON ol1.country_id = c1.id AND c1.overall_score > 95\nJOIN official_languages ol2 ON l.id = ol2.language_id\nJOIN countries c2 ON ol2.country_id = c2.id AND c2.overall_score < 90\nGROUP BY l.name;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of languages that are the official language for both countries with overall score greater than 95 and countries with overall score less than than 90.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol_high ON l.id = ol_high.language_id\nJOIN countries c_high ON ol_high.country_id = c_high.id AND c_high.overall_score > 95\nJOIN official_languages ol_low ON l.id = ol_low.language_id\nJOIN countries c_low ON ol_low.country_id = c_low.id AND c_low.overall_score < 90\nGROUP BY l.name;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "Show the names of languages that are the official language for both countries with overall score greater than 95 and countries with overall score less than than 90.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

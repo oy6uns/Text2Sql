@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM Movies WHERE Rating IS NOT NULL;

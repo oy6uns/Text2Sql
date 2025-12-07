@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Book.ISBN, COALESCE(SUM(Books_Order.amount), 0) AS times_ordered\nFROM Book\nLEFT JOIN Books_Order ON Book.ISBN = Books_Order.ISBN\nGROUP BY Book.ISBN;",
+    "score": 3.5,
+    "syntax_score": 2.5,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "What are all isbns for each book, and how many times has each been ordered?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Book.ISBN, COALESCE(SUM(Books_Order.amount), 0) AS times_ordered\nFROM Book\nLEFT JOIN Books_Order ON Book.ISBN = Books_Order.ISBN\nGROUP BY Book.ISBN;",
+    "score": 3.5,
+    "syntax_score": 2.5,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "What are all isbns for each book, and how many times has each been ordered?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT b.ISBN, COALESCE(SUM(bo.amount), 0) AS times_ordered\nFROM Book b\nLEFT JOIN Books_Order bo ON b.ISBN = bo.ISBN\nGROUP BY b.ISBN;",
+    "score": 3.5,
+    "syntax_score": 2.5,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "What are all isbns for each book, and how many times has each been ordered?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

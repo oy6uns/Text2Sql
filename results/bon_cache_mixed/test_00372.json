@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customers_and_Services cs ON c.Customer_ID = cs.Customer_ID\nJOIN (\n    SELECT Service_ID\n    FROM Customers_and_Services\n    GROUP BY Service_ID\n    ORDER BY COUNT(DISTINCT Customer_ID) ASC\n    LIMIT 1\n) least_used_service ON cs.Service_ID = least_used_service.Service_ID;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customer_Interactions ci ON c.Customer_ID = ci.Customer_ID\nWHERE ci.Service_ID IN (\n    SELECT Service_ID\n    FROM Customer_Interactions\n    GROUP BY Service_ID\n    HAVING COUNT(*) = (\n        SELECT MIN(service_count)\n        FROM (\n            SELECT COUNT(*) AS service_count\n            FROM Customer_Interactions\n            GROUP BY Service_ID\n        ) AS counts\n    )\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customer_Interactions ci ON c.Customer_ID = ci.Customer_ID\nWHERE ci.Service_ID IN (\n    SELECT Service_ID\n    FROM Customer_Interactions\n    GROUP BY Service_ID\n    HAVING COUNT(*) = (\n        SELECT MIN(service_count)\n        FROM (\n            SELECT COUNT(*) AS service_count\n            FROM Customer_Interactions\n            GROUP BY Service_ID\n        ) AS counts\n    )\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customers_and_Services cs ON c.Customer_ID = cs.Customer_ID\nWHERE cs.Service_ID = (\n    SELECT Service_ID\n    FROM (\n        SELECT Service_ID, COUNT(*) AS usage_count\n        FROM Customers_and_Services\n        GROUP BY Service_ID\n        ORDER BY usage_count ASC\n        LIMIT 1\n    )\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customers_and_Services cs ON c.Customer_ID = cs.Customer_ID\nWHERE cs.Service_ID = (\n    SELECT Service_ID\n    FROM (\n        SELECT Service_ID, COUNT(*) AS usage_count\n        FROM Customers_and_Services\n        GROUP BY Service_ID\n        ORDER BY usage_count ASC\n        FETCH FIRST 1 ROW ONLY\n    )\n)",
+    "score": -96.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": -100.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FETCH\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n    COUNT(DISTINCT se.student_id) AS number_of_students,\n    se.event_type_code,\n    ret.event_type_description\nFROM Student_Events se\nJOIN Ref_Event_Types ret ON se.event_type_code = ret.event_type_code\nGROUP BY se.event_type_code, ret.event_type_description\nORDER BY COUNT(se.student_id) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "How many students have joined in the most common type of event? List the number, the event type and description.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n    COUNT(DISTINCT se.student_id) AS number_of_students,\n    se.event_type_code,\n    ret.event_type_description\nFROM \n    Student_Events se\nJOIN \n    Ref_Event_Types ret ON se.event_type_code = ret.event_type_code\nGROUP BY \n    se.event_type_code, ret.event_type_description\nORDER BY \n    COUNT(se.event_id) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "How many students have joined in the most common type of event? List the number, the event type and description.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n    COUNT(DISTINCT se.student_id) AS number_of_students,\n    se.event_type_code,\n    ret.event_type_description\nFROM \n    Student_Events se\nJOIN \n    Ref_Event_Types ret ON se.event_type_code = ret.event_type_code\nGROUP BY \n    se.event_type_code, ret.event_type_description\nORDER BY \n    COUNT(*) DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "How many students have joined in the most common type of event? List the number, the event type and description.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

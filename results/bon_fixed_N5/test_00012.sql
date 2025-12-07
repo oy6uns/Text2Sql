@@ -1,0 +1,1 @@
+SELECT DISTINCT Country FROM player WHERE Earnings > 1200000;

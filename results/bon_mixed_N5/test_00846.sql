@@ -1,0 +1,1 @@
+SELECT DISTINCT bid FROM Reserves WHERE sid = 1;

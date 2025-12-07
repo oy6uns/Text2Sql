@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT d.Name\nFROM district d\nJOIN spokesman_district sd1 ON d.District_ID = sd1.District_ID\nJOIN spokesman s1 ON sd1.Spokesman_ID = s1.Spokesman_ID AND s1.Rank_position = 1\nJOIN spokesman_district sd2 ON d.District_ID = sd2.District_ID\nJOIN spokesman s2 ON sd2.Spokesman_ID = s2.Spokesman_ID AND s2.Rank_position = 2\nGROUP BY d.Name;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the names of the districts which have had both spokesman with rank position 1 and 2.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT d.Name\nFROM district d\nJOIN spokesman_district sd ON d.District_ID = sd.District_ID\nJOIN spokesman s ON sd.Spokesman_ID = s.Spokesman_ID\nWHERE s.Rank_position IN (1, 2)\nGROUP BY d.District_ID, d.Name\nHAVING COUNT(DISTINCT s.Rank_position) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the names of the districts which have had both spokesman with rank position 1 and 2.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT d.Name\nFROM district d\nJOIN spokesman_district sd ON d.District_ID = sd.District_ID\nJOIN spokesman s ON sd.Spokesman_ID = s.Spokesman_ID\nWHERE s.Rank_position IN (1, 2)\nGROUP BY d.District_ID, d.Name\nHAVING COUNT(DISTINCT s.Rank_position) = 2",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the names of the districts which have had both spokesman with rank position 1 and 2.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT d.Name\nFROM district d\nJOIN spokesman_district sd ON d.District_ID = sd.District_ID\nJOIN spokesman s ON sd.Spokesman_ID = s.Spokesman_ID\nWHERE s.Rank_position IN (1, 2)\nGROUP BY d.Name\nHAVING COUNT(DISTINCT s.Rank_position) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the names of the districts which have had both spokesman with rank position 1 and 2.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT d.Name\nFROM district d\nJOIN spokesman_district sd ON d.District_ID = sd.District_ID\nJOIN spokesman s ON sd.Spokesman_ID = s.Spokesman_ID\nWHERE s.Rank_position IN (1, 2)\nGROUP BY d.Name\nHAVING COUNT(DISTINCT s.Rank_position) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the names of the districts which have had both spokesman with rank position 1 and 2.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

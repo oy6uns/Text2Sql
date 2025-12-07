@@ -1,0 +1,1 @@
+SELECT DISTINCT Manager FROM branch;

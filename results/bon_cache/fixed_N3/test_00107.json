@@ -1,0 +1,113 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH Gender_Order_Counts AS (\n  SELECT c.gender_code, COUNT(o.order_id) AS order_count\n  FROM Customers c\n  LEFT JOIN Orders o ON c.customer_id = o.customer_id\n  GROUP BY c.gender_code\n), Min_Gender AS (\n  SELECT gender_code\n  FROM Gender_Order_Counts\n  WHERE order_count = (SELECT MIN(order_count) FROM Gender_Order_Counts)\n)\nSELECT DISTINCT c.email_address, c.town_city, c.county\nFROM Customers c\nJOIN Min_Gender mg ON c.gender_code = mg.gender_code;",
+    "score": 2.75,
+    "syntax_score": 2.5,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What are the email addresses, cities, and counties listed for all cusomters who are from the gender that orders less often?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "GENDER_ORDER_COUNTS",
+        "GENDER_ORDER_COUNTS",
+        "MIN_GENDER"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH GenderOrderCounts AS (\n  SELECT c.gender_code, COUNT(o.order_id) AS order_count\n  FROM Customers c\n  LEFT JOIN Orders o ON c.customer_id = o.customer_id\n  GROUP BY c.gender_code\n),\nMinOrderGender AS (\n  SELECT gender_code\n  FROM GenderOrderCounts\n  WHERE order_count = (SELECT MIN(order_count) FROM GenderOrderCounts)\n)\nSELECT DISTINCT c.email_address, c.town_city, c.county\nFROM Customers c\nJOIN MinOrderGender m ON c.gender_code = m.gender_code;",
+    "score": 2.75,
+    "syntax_score": 2.5,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What are the email addresses, cities, and counties listed for all cusomters who are from the gender that orders less often?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "GENDERORDERCOUNTS",
+        "GENDERORDERCOUNTS",
+        "MINORDERGENDER"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH GenderOrderCounts AS (\n    SELECT c.gender_code, COUNT(o.order_id) AS order_count\n    FROM Customers c\n    LEFT JOIN Orders o ON c.customer_id = o.customer_id\n    GROUP BY c.gender_code\n), MinOrderCount AS (\n    SELECT MIN(order_count) AS min_order_count FROM GenderOrderCounts\n), LessOftenGender AS (\n    SELECT gender_code FROM GenderOrderCounts, MinOrderCount\n    WHERE order_count = min_order_count\n)\nSELECT email_address, town_city, county\nFROM Customers\nWHERE gender_code IN (SELECT gender_code FROM LessOftenGender)",
+    "score": 2.75,
+    "syntax_score": 2.5,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What are the email addresses, cities, and counties listed for all cusomters who are from the gender that orders less often?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "GENDERORDERCOUNTS",
+        "GENDERORDERCOUNTS",
+        "LESSOFTENGENDER"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH GenderCounts AS (\n  SELECT gender_code, COUNT(*) AS cnt\n  FROM Customers\n  GROUP BY gender_code\n),\nMinCount AS (\n  SELECT MIN(cnt) AS min_cnt\n  FROM GenderCounts\n)\nSELECT email_address, town_city, county\nFROM Customers\nWHERE gender_code IN (\n  SELECT gender_code\n  FROM GenderCounts, MinCount\n  WHERE GenderCounts.cnt = MinCount.min_cnt\n)",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "What are the email address, town and county of the customers who are of the least common gender?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "GENDERCOUNTS",
+        "GENDERCOUNTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH GenderCounts AS (\n  SELECT gender_code, COUNT(*) AS cnt\n  FROM Customers\n  GROUP BY gender_code\n),\nLeastCommonGender AS (\n  SELECT gender_code\n  FROM GenderCounts\n  WHERE cnt = (SELECT MIN(cnt) FROM GenderCounts)\n)\nSELECT email_address, town_city, county\nFROM Customers\nWHERE gender_code IN (SELECT gender_code FROM LeastCommonGender)",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "What are the email address, town and county of the customers who are of the least common gender?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "GENDERCOUNTS",
+        "GENDERCOUNTS",
+        "LEASTCOMMONGENDER"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH GenderCounts AS (\n  SELECT gender_code, COUNT(*) AS cnt\n  FROM Customers\n  GROUP BY gender_code\n), MinCount AS (\n  SELECT MIN(cnt) AS min_cnt\n  FROM GenderCounts\n), LeastCommonGenders AS (\n  SELECT gender_code\n  FROM GenderCounts, MinCount\n  WHERE cnt = min_cnt\n)\nSELECT email_address, town_city, county\nFROM Customers\nWHERE gender_code IN (SELECT gender_code FROM LeastCommonGenders)",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "What are the email address, town and county of the customers who are of the least common gender?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "GENDERCOUNTS",
+        "GENDERCOUNTS",
+        "LEASTCOMMONGENDERS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

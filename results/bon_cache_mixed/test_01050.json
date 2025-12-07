@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN Paper p ON al.paper_id = p.paper_id\nWHERE p.year = 2009\n  AND a.author_id IN (\n    SELECT al2.author_id\n    FROM Author_list al2\n    JOIN Paper p2 ON al2.paper_id = p2.paper_id\n    WHERE p2.venue = 'NAACL' AND p2.year = 2009\n  )\n  AND a.author_id IN (\n    SELECT al3.author_id\n    FROM Author_list al3\n    JOIN Paper p3 ON al3.paper_id = p3.paper_id\n    WHERE p3.venue = 'ACL' AND p3.year = 2009\n  )",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "What are the names of authors who published in both NAACL and ACL in 2009?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN Paper p ON al.paper_id = p.paper_id\nWHERE p.year = 2009 AND p.venue = 'NAACL'\nAND a.author_id IN (\n    SELECT al2.author_id\n    FROM Author_list al2\n    JOIN Paper p2 ON al2.paper_id = p2.paper_id\n    WHERE p2.year = 2009 AND p2.venue = 'ACL'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "What are the names of authors who published in both NAACL and ACL in 2009?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN Paper p ON al.paper_id = p.paper_id\nWHERE p.venue = 'NAACL' AND p.year = 2009\nAND a.author_id IN (\n    SELECT al2.author_id\n    FROM Author_list al2\n    JOIN Paper p2 ON al2.paper_id = p2.paper_id\n    WHERE p2.venue = 'ACL' AND p2.year = 2009\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "What are the names of authors who published in both NAACL and ACL in 2009?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN Paper p ON al.paper_id = p.paper_id\nWHERE p.year = 2009\n  AND p.venue IN ('NAACL', 'ACL')\nGROUP BY a.author_id, a.name\nHAVING COUNT(DISTINCT p.venue) = 2;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "What are the names of authors who published in both NAACL and ACL in 2009?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT a.name\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN Paper p ON al.paper_id = p.paper_id\nWHERE p.year = 2009\n  AND p.venue IN ('NAACL', 'ACL')\nGROUP BY a.author_id, a.name\nHAVING COUNT(DISTINCT p.venue) = 2",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "What are the names of authors who published in both NAACL and ACL in 2009?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS coauthored_papers\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nJOIN (\n    SELECT paper_id\n    FROM Author_list al2\n    JOIN Author au2 ON al2.author_id = au2.author_id\n    WHERE au2.name = 'Mckeown , Kathleen'\n) mcpapers ON al.paper_id = mcpapers.paper_id\nWHERE a.name <> 'Mckeown , Kathleen'\nGROUP BY a.name\nORDER BY coauthored_papers DESC\nLIMIT 1;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Who has the most papers co-authored with Mckeown , Kathleen ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT a.name\nFROM Author_list al1\nJOIN Author_list al2 ON al1.paper_id = al2.paper_id AND al1.author_id <> al2.author_id\nJOIN Author a ON al2.author_id = a.author_id\nWHERE al1.author_id = (SELECT author_id FROM Author WHERE name = 'Mckeown, Kathleen')\nGROUP BY a.author_id, a.name\nORDER BY COUNT(DISTINCT al1.paper_id) DESC\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "Who has the most papers co-authored with Mckeown , Kathleen ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT a.name, COUNT(DISTINCT al1.paper_id) AS coauthored_papers_count\nFROM Author a\nJOIN Author_list al1 ON a.author_id = al1.author_id\nJOIN Author_list al2 ON al1.paper_id = al2.paper_id\nJOIN Author m ON m.author_id = al2.author_id\nWHERE m.name = 'Mckeown , Kathleen' AND a.name <> 'Mckeown , Kathleen'\nGROUP BY a.name\nORDER BY coauthored_papers_count DESC\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "Who has the most papers co-authored with Mckeown , Kathleen ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS coauthored_papers_count\nFROM Author_list al\nJOIN Author a ON al.author_id = a.author_id\nJOIN Author_list al_m ON al.paper_id = al_m.paper_id\nJOIN Author m ON al_m.author_id = m.author_id\nWHERE m.name = 'Mckeown , Kathleen' AND a.name <> 'Mckeown , Kathleen'\nGROUP BY a.name\nORDER BY coauthored_papers_count DESC\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "Who has the most papers co-authored with Mckeown , Kathleen ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "WITH Mckeown_papers AS (\n    SELECT paper_id\n    FROM Author_list\n    WHERE author_id = (SELECT author_id FROM Author WHERE name = 'Mckeown , Kathleen')\n),\nCoauthors AS (\n    SELECT al.author_id, COUNT(*) AS coauthored_papers_count\n    FROM Author_list al\n    JOIN Mckeown_papers mp ON al.paper_id = mp.paper_id\n    WHERE al.author_id <> (SELECT author_id FROM Author WHERE name = 'Mckeown , Kathleen')\n    GROUP BY al.author_id\n)\nSELECT name\nFROM Author\nWHERE author_id = (\n    SELECT author_id\n    FROM Coauthors\n    ORDER BY coauthored_papers_count DESC\n    LIMIT 1\n)",
+    "score": 1.25,
+    "syntax_score": 3.0,
+    "schema_score": -1.75,
+    "execution_score": 0.0,
+    "question": "Who has the most papers co-authored with Mckeown , Kathleen ?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "MCKEOWN_PAPERS",
+        "COAUTHORS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,5 @@
+SELECT Class
+FROM headphone
+GROUP BY Class
+ORDER BY COUNT(*) DESC
+LIMIT 1;

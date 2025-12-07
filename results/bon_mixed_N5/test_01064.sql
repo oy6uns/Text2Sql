@@ -1,0 +1,5 @@
+SELECT Year
+FROM conference
+GROUP BY Year
+ORDER BY COUNT(*) ASC
+LIMIT 1;

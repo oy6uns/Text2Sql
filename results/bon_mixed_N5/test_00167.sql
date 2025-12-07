@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Driver_ID) FROM driver WHERE Racing_Series = 'NASCAR';

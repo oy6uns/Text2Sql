@@ -1,0 +1,1 @@
+SELECT Name FROM Client WHERE IdClient NOT IN (SELECT DISTINCT IdClient FROM Orders);

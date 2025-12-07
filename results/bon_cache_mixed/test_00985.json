@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al ON p.paper_id = al.paper_id\nJOIN Author a ON al.author_id = a.author_id\nWHERE a.name = 'Mckeown'\n  AND p.paper_id NOT IN (\n    SELECT paper_id\n    FROM Author_list al2\n    JOIN Author a2 ON al2.author_id = a2.author_id\n    WHERE a2.name = 'Rambow'\n  )",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the titles and paper IDs for papers which have Mckeown but not Rambow in author list.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT paper_id, title\nFROM Paper\nWHERE paper_id IN (\n    SELECT paper_id\n    FROM Author_list\n    JOIN Author ON Author_list.author_id = Author.author_id\n    WHERE name = 'Mckeown'\n)\nAND paper_id NOT IN (\n    SELECT paper_id\n    FROM Author_list\n    JOIN Author ON Author_list.author_id = Author.author_id\n    WHERE name = 'Rambow'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the titles and paper IDs for papers which have Mckeown but not Rambow in author list.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al ON p.paper_id = al.paper_id\nJOIN Author a ON al.author_id = a.author_id\nWHERE a.name = 'Mckeown'\nAND p.paper_id NOT IN (\n    SELECT al2.paper_id\n    FROM Author_list al2\n    JOIN Author a2 ON al2.author_id = a2.author_id\n    WHERE a2.name = 'Rambow'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the titles and paper IDs for papers which have Mckeown but not Rambow in author list.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al_m ON p.paper_id = al_m.paper_id\nJOIN Author a_m ON al_m.author_id = a_m.author_id\nLEFT JOIN Author_list al_r ON p.paper_id = al_r.paper_id\nLEFT JOIN Author a_r ON al_r.author_id = a_r.author_id AND a_r.name = 'Rambow'\nWHERE a_m.name = 'Mckeown' AND a_r.author_id IS NULL;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the titles and paper IDs for papers which have Mckeown but not Rambow in author list.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT p.paper_id, p.title\nFROM Paper p\nJOIN Author_list al ON p.paper_id = al.paper_id\nJOIN Author a ON al.author_id = a.author_id\nWHERE a.name = 'Mckeown'\nAND p.paper_id NOT IN (\n    SELECT paper_id\n    FROM Author_list al2\n    JOIN Author a2 ON al2.author_id = a2.author_id\n    WHERE a2.name = 'Rambow'\n)\nGROUP BY p.paper_id, p.title;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the titles and paper IDs for papers which have Mckeown but not Rambow in author list.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

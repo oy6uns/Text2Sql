@@ -1,0 +1,1 @@
+SELECT Name FROM region ORDER BY Name ASC;

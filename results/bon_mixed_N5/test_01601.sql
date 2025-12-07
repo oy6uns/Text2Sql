@@ -1,0 +1,4 @@
+SELECT Make
+FROM team
+GROUP BY Make
+HAVING COUNT(DISTINCT Team_ID) > 1;

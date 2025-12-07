@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE r.Date = (SELECT MIN(Date) FROM receipts)\n   OR g.Price > 10;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts which either has the earliest date or has a good with price above 10.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 62,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE r.Date = (SELECT MIN(Date) FROM receipts)\n   OR g.Price > 10;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts which either has the earliest date or has a good with price above 10.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 62,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT ReceiptNumber\nFROM receipts\nWHERE Date = (SELECT MIN(Date) FROM receipts)\nOR ReceiptNumber IN (\n    SELECT r.ReceiptNumber\n    FROM receipts r\n    JOIN items i ON r.ReceiptNumber = i.Receipt\n    JOIN goods g ON i.Item = g.Id\n    WHERE g.Price > 10\n)",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts which either has the earliest date or has a good with price above 10.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 62,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE r.Date = (SELECT MIN(Date) FROM receipts)\n   OR g.Price > 10;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts which either has the earliest date or has a good with price above 10.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 62,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT r.ReceiptNumber\nFROM receipts r\nLEFT JOIN items i ON r.ReceiptNumber = i.Receipt\nLEFT JOIN goods g ON i.Item = g.Id\nWHERE r.Date = (SELECT MIN(Date) FROM receipts)\n   OR g.Price > 10;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find all receipts which either has the earliest date or has a good with price above 10.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 62,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

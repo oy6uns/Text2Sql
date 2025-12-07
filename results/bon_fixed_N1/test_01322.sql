@@ -1,0 +1,1 @@
+SELECT DISTINCT Entrant FROM driver WHERE Age >= 20;

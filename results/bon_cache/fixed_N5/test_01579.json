@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nLEFT JOIN (\n    SELECT i.Item, COUNT(*) AS purchase_count\n    FROM items i\n    JOIN goods g2 ON i.Item = g2.Id\n    WHERE g2.Flavor = 'chocolate'\n    GROUP BY i.Item\n) c ON g.Id = c.Item\nWHERE g.Flavor = 'chocolate' AND (c.purchase_count IS NULL OR c.purchase_count <= 10)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all the items that have chocolate flavor but were not bought more than 10 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nLEFT JOIN (\n    SELECT i.Item, COUNT(*) AS purchase_count\n    FROM items i\n    JOIN goods g2 ON i.Item = g2.Id\n    WHERE g2.Flavor = 'chocolate'\n    GROUP BY i.Item\n) AS item_counts ON g.Id = item_counts.Item\nWHERE g.Flavor = 'chocolate' AND (item_counts.purchase_count IS NULL OR item_counts.purchase_count <= 10)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all the items that have chocolate flavor but were not bought more than 10 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nLEFT JOIN items i ON g.Id = i.Item\nWHERE g.Flavor = 'chocolate'\nGROUP BY g.Id, g.Flavor, g.Food, g.Price\nHAVING COUNT(i.Item) <= 10;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all the items that have chocolate flavor but were not bought more than 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nLEFT JOIN items i ON g.Id = i.Item\nWHERE g.Flavor = 'chocolate'\nGROUP BY g.Id, g.Flavor, g.Food, g.Price\nHAVING COUNT(i.Item) <= 10;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all the items that have chocolate flavor but were not bought more than 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nLEFT JOIN items i ON g.Id = i.Item\nWHERE g.Flavor = 'chocolate'\nGROUP BY g.Id, g.Flavor, g.Food, g.Price\nHAVING COUNT(i.Item) <= 10 OR COUNT(i.Item) = 0;",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "Find all the items that have chocolate flavor but were not bought more than 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

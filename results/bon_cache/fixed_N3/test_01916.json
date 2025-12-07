@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT COUNT(*) AS NumberOfPackages\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nLEFT JOIN Client sender ON p.Sender = sender.AccountNumber\nLEFT JOIN Client recipient ON p.Recipient = recipient.AccountNumber\nLEFT JOIN Employee e ON s.Manager = e.EmployeeID\nJOIN Planet pl ON s.Planet = pl.PlanetID\nWHERE pl.Name = 'Omicron Persei 8'\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       JOIN Package pk ON pk.Sender = c.AccountNumber\n       JOIN Shipment sh ON pk.Shipment = sh.ShipmentID\n       JOIN Employee emp ON sh.Manager = emp.EmployeeID\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber\n       FROM Client c\n       WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender IN (\n       SELECT c.AccountNumber FROM Client c WHERE c.Name = 'Zapp Brannigan'\n   )\n   OR p.Sender",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the number of packages shipped on Omicron Persei 8 planet or sent by Zapp Brannigan?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT COUNT(*) AS NumberOfPackages\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nLEFT JOIN Employee e ON e.Name = 'Zapp Brannigan'\nLEFT JOIN Planet pl ON s.Planet = pl.PlanetID\nWHERE pl.Name = 'Omicron Persei 8' OR p.Sender = (\n    SELECT AccountNumber FROM Client WHERE Name = 'Zapp Brannigan'\n)",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the number of packages shipped on Omicron Persei 8 planet or sent by Zapp Brannigan?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT COUNT(*) AS NumberOfPackages\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nLEFT JOIN Client sender ON p.Sender = sender.AccountNumber\nLEFT JOIN Client recipient ON p.Recipient = recipient.AccountNumber\nLEFT JOIN Employee e ON s.Manager = e.EmployeeID\nWHERE s.Planet = (SELECT PlanetID FROM Planet WHERE Name = 'Omicron Persei 8')\n   OR p.Sender IN (SELECT AccountNumber FROM Client WHERE Name = 'Zapp Brannigan')",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the number of packages shipped on Omicron Persei 8 planet or sent by Zapp Brannigan?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

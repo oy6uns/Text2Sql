@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT AVG(room_count) \nFROM (\n  SELECT p.property_id, COUNT(r.room_number) AS room_count\n  FROM Properties p\n  JOIN Property_Features pf ON p.property_id = pf.property_id\n  JOIN Features f ON pf.feature_id = f.feature_id\n  LEFT JOIN Rooms r ON p.property_id = r.property_id\n  WHERE f.feature_name = 'garden'\n  GROUP BY p.property_id\n) subquery",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "On average, how many rooms do properties with garden features have?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT AVG(room_count) \nFROM (\n    SELECT p.property_id, COUNT(r.room_number) AS room_count\n    FROM Properties p\n    JOIN Property_Features pf ON p.property_id = pf.property_id\n    JOIN Features f ON pf.feature_id = f.feature_id\n    LEFT JOIN Rooms r ON p.property_id = r.property_id\n    WHERE LOWER(f.feature_name) = 'garden'\n    GROUP BY p.property_id\n) subquery",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "On average, how many rooms do properties with garden features have?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT AVG(room_count) AS average_rooms\nFROM (\n  SELECT p.property_id, COUNT(r.room_number) AS room_count\n  FROM Properties p\n  JOIN Property_Features pf ON p.property_id = pf.property_id\n  JOIN Features f ON pf.feature_id = f.feature_id\n  LEFT JOIN Rooms r ON p.property_id = r.property_id\n  WHERE LOWER(f.feature_name) = 'garden'\n  GROUP BY p.property_id\n) sub;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "On average, how many rooms do properties with garden features have?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT AVG(CAST(p.room_count AS FLOAT)) AS average_rooms_with_garden\nFROM Properties p\nJOIN Property_Features pf ON p.property_id = pf.property_id\nJOIN Features f ON pf.feature_id = f.feature_id\nWHERE LOWER(f.feature_name) LIKE '%garden%' AND p.room_count IS NOT NULL;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "On average, how many rooms do properties with garden features have?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT AVG(room_count::numeric) AS average_rooms_with_garden\nFROM (\n    SELECT p.property_id, COUNT(r.room_number) AS room_count\n    FROM Properties p\n    JOIN Property_Features pf ON p.property_id = pf.property_id\n    JOIN Features f ON pf.feature_id = f.feature_id\n    LEFT JOIN Rooms r ON p.property_id = r.property_id\n    WHERE LOWER(f.feature_name) = 'garden'\n    GROUP BY p.property_id\n) subquery;",
+    "score": -95.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "On average, how many rooms do properties with garden features have?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "unrecognized token: \":\"",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

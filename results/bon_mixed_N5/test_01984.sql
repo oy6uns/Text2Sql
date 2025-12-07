@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM author WHERE Age < 30;

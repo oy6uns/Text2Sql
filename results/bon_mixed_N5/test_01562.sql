@@ -1,0 +1,5 @@
+SELECT Date
+FROM receipts
+GROUP BY Date
+ORDER BY COUNT(ReceiptNumber) DESC
+LIMIT 3;

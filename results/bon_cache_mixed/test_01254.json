@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT p1.title\nFROM Paintings p1\nWHERE p1.height_mm > ANY (\n  SELECT p2.height_mm\n  FROM Paintings p2\n  WHERE p2.medium = 'canvas'\n);",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the distinct titles of all the paintings that have a longer height than some painting on canvas?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT p1.title\nFROM Paintings p1\nWHERE p1.height_mm > ANY (\n    SELECT p2.height_mm\n    FROM Paintings p2\n    WHERE p2.medium = 'canvas'\n)",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the distinct titles of all the paintings that have a longer height than some painting on canvas?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT p1.title\nFROM Paintings p1\nWHERE p1.height_mm > ANY (\n    SELECT p2.height_mm\n    FROM Paintings p2\n    WHERE p2.medium = 'canvas'\n)",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the distinct titles of all the paintings that have a longer height than some painting on canvas?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT p1.title\nFROM Paintings p1\nWHERE p1.height_mm > ANY (\n    SELECT p2.height_mm\n    FROM Paintings p2\n    WHERE p2.medium = 'canvas'\n)",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the distinct titles of all the paintings that have a longer height than some painting on canvas?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT p1.title\nFROM Paintings p1\nWHERE p1.height_mm > ANY (\n    SELECT p2.height_mm\n    FROM Paintings p2\n    WHERE p2.medium = 'canvas'\n)",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Find the distinct titles of all the paintings that have a longer height than some painting on canvas?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"SELECT\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

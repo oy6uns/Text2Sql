@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Package.PackageNumber\nFROM Package\nJOIN Shipment ON Package.Shipment = Shipment.ShipmentID\nJOIN Planet ON Shipment.Planet = Planet.PlanetID\nLEFT JOIN Client AS SenderClient ON Package.Sender = SenderClient.AccountNumber\nLEFT JOIN Client AS RecipientClient ON Package.Recipient = RecipientClient.AccountNumber\nLEFT JOIN Employee ON Package.Sender = Employee.EmployeeID\nWHERE Planet.Name = 'Omicron Persei 8'\n   OR Package.Sender IN (\n       SELECT Client.AccountNumber\n       FROM Client\n       JOIN Employee ON Employee.Name = 'Zapp Brannigan'\n       WHERE Client.AccountNumber = Package.Sender\n   );",
+    "score": 4.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Package.PackageNumber\nFROM Package\nJOIN Shipment ON Package.Shipment = Shipment.ShipmentID\nJOIN Planet ON Shipment.Planet = Planet.PlanetID\nLEFT JOIN Client SenderClient ON Package.Sender = SenderClient.AccountNumber\nLEFT JOIN Client RecipientClient ON Package.Recipient = RecipientClient.AccountNumber\nLEFT JOIN Employee ON Employee.Name = 'Zapp Brannigan'\nWHERE Planet.Name = 'Omicron Persei 8' \n   OR Package.Sender IN (SELECT AccountNumber FROM Client WHERE Name = 'Zapp Brannigan')",
+    "score": 4.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": 0.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT PackageNumber \nFROM Package \nWHERE Shipment IN (\n    SELECT ShipmentID \n    FROM Shipment \n    WHERE Planet = (SELECT PlanetID FROM Planet WHERE Name = 'Omicron Persei 8')\n) \nOR Sender = (\n    SELECT AccountNumber \n    FROM Client \n    WHERE Name = 'Zapp Brannigan'\n)",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT PackageNumber\nFROM Package\nWHERE Shipment IN (\n    SELECT ShipmentID\n    FROM Shipment\n    WHERE Planet = (\n        SELECT PlanetID\n        FROM Planet\n        WHERE Name = 'Omicron Persei 8'\n    )\n)\nOR Sender = (\n    SELECT AccountNumber\n    FROM Client\n    WHERE Name = 'Zapp Brannigan'\n)",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT Package.PackageNumber\nFROM Package\nJOIN Shipment ON Package.Shipment = Shipment.ShipmentID\nJOIN Planet ON Shipment.Planet = Planet.PlanetID\nLEFT JOIN Client AS SenderClient ON Package.Sender = SenderClient.AccountNumber\nLEFT JOIN Client AS RecipientClient ON Package.Recipient = RecipientClient.AccountNumber\nLEFT JOIN Client AS Sender ON Package.Sender = Sender.AccountNumber\nLEFT JOIN Client AS Recipient ON Package.Recipient = Recipient.AccountNumber\nLEFT JOIN Client AS SenderAlias ON Package.Sender = SenderAlias.AccountNumber\nLEFT JOIN Client AS RecipientAlias ON Package.Recipient = RecipientAlias.AccountNumber\nLEFT JOIN Client AS SenderClientAlias ON Package.Sender = SenderClientAlias.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias ON Package.Recipient = RecipientClientAlias.AccountNumber\nLEFT JOIN Client AS SenderClientAlias2 ON Package.Sender = SenderClientAlias2.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias2 ON Package.Recipient = RecipientClientAlias2.AccountNumber\nLEFT JOIN Client AS SenderClientAlias3 ON Package.Sender = SenderClientAlias3.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias3 ON Package.Recipient = RecipientClientAlias3.AccountNumber\nLEFT JOIN Client AS SenderClientAlias4 ON Package.Sender = SenderClientAlias4.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias4 ON Package.Recipient = RecipientClientAlias4.AccountNumber\nLEFT JOIN Client AS SenderClientAlias5 ON Package.Sender = SenderClientAlias5.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias5 ON Package.Recipient = RecipientClientAlias5.AccountNumber\nLEFT JOIN Client AS SenderClientAlias6 ON Package.Sender = SenderClientAlias6.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias6 ON Package.Recipient = RecipientClientAlias6.AccountNumber\nLEFT JOIN Client AS SenderClientAlias7 ON Package.Sender = SenderClientAlias7.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias7 ON Package.Recipient = RecipientClientAlias7.AccountNumber\nLEFT JOIN Client AS SenderClientAlias8 ON Package.Sender = SenderClientAlias8.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias8 ON Package.Recipient = RecipientClientAlias8.AccountNumber\nLEFT JOIN Client AS SenderClientAlias9 ON Package.Sender = SenderClientAlias9.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias9 ON Package.Recipient = RecipientClientAlias9.AccountNumber\nLEFT JOIN Client AS SenderClientAlias10 ON Package.Sender = SenderClientAlias10.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias10 ON Package.Recipient = RecipientClientAlias10.AccountNumber\nLEFT JOIN Client AS SenderClientAlias11 ON Package.Sender = SenderClientAlias11.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias11 ON Package.Recipient = RecipientClientAlias11.AccountNumber\nLEFT JOIN Client AS SenderClientAlias12 ON Package.Sender = SenderClientAlias12.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias12 ON Package.Recipient = RecipientClientAlias12.AccountNumber\nLEFT JOIN Client AS SenderClientAlias13 ON Package.Sender = SenderClientAlias13.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias13 ON Package.Recipient = RecipientClientAlias13.AccountNumber\nLEFT JOIN Client AS SenderClientAlias14 ON Package.Sender = SenderClientAlias14.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias14 ON Package.Recipient = RecipientClientAlias14.AccountNumber\nLEFT JOIN Client AS SenderClientAlias15 ON Package.Sender = SenderClientAlias15.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias15 ON Package.Recipient = RecipientClientAlias15.AccountNumber\nLEFT JOIN Client AS SenderClientAlias16 ON Package.Sender = SenderClientAlias16.AccountNumber\nLEFT JOIN Client AS RecipientClientAlias16 ON Package.Recipient = RecipientClientAlias16.AccountNumber\nLEFT JOIN Client AS SenderClient",
+    "score": -96.0,
+    "syntax_score": 3.0,
+    "schema_score": 1.0,
+    "execution_score": -100.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "ambiguous column name: SenderClient.AccountNumber",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

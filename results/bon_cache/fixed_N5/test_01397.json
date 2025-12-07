@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.id, l.name\nHAVING \n    COUNT(CASE WHEN c.overall_score > 95 THEN 1 END) > 0\n    AND COUNT(CASE WHEN c.overall_score < 90 THEN 1 END) > 0;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the names of languages that are the official language not only for countries that have an overall score of above 95, but also for countries that have an overall score below 90?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.id, l.name\nHAVING \n    SUM(CASE WHEN c.overall_score > 95 THEN 1 ELSE 0 END) > 0\n    AND\n    SUM(CASE WHEN c.overall_score < 90 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of languages that are the official language not only for countries that have an overall score of above 95, but also for countries that have an overall score below 90?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.name\nHAVING \n    SUM(CASE WHEN c.overall_score > 95 THEN 1 ELSE 0 END) > 0\n    AND\n    SUM(CASE WHEN c.overall_score < 90 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of languages that are the official language not only for countries that have an overall score of above 95, but also for countries that have an overall score below 90?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.id, l.name\nHAVING \n    SUM(CASE WHEN c.overall_score > 95 THEN 1 ELSE 0 END) > 0\n    AND\n    SUM(CASE WHEN c.overall_score < 90 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of languages that are the official language not only for countries that have an overall score of above 95, but also for countries that have an overall score below 90?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT l.name\nFROM languages l\nJOIN official_languages ol ON l.id = ol.language_id\nJOIN countries c ON ol.country_id = c.id\nGROUP BY l.id, l.name\nHAVING \n    SUM(CASE WHEN c.overall_score > 95 THEN 1 ELSE 0 END) > 0\n    AND\n    SUM(CASE WHEN c.overall_score < 90 THEN 1 ELSE 0 END) > 0;",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of languages that are the official language not only for countries that have an overall score of above 95, but also for countries that have an overall score below 90?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

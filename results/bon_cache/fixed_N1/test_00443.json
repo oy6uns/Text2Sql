@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT t.teacher_details\nFROM Teachers t\nJOIN Classes c ON t.teacher_id = c.teacher_id\nWHERE LOWER(c.class_details) LIKE '%data%'\n  AND t.teacher_id NOT IN (\n    SELECT teacher_id\n    FROM Classes\n    WHERE LOWER(class_details) LIKE 'net%'\n  )",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "List the details of the teachers who teach some class whose detail has the substring 'data' but do not teach a class whose detail contains the prefix 'net'",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

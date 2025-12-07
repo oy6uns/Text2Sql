@@ -1,0 +1,175 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT a.artistID, a.fname, a.lname, COUNT(p.paintingID) AS oil_paintings_count\nFROM Artists a\nJOIN Paintings p ON a.artistID = p.painterID\nWHERE LOWER(p.medium) LIKE '%oil%'\nGROUP BY a.artistID, a.fname, a.lname\nHAVING COUNT(p.paintingID) = (\n    SELECT MAX(oil_count) FROM (\n        SELECT COUNT(p2.paintingID) AS oil_count\n        FROM Paintings p2\n        WHERE LOWER(p2.medium) LIKE '%oil%'\n        GROUP BY p2.painterID\n    )\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Artists.artistID, Artists.fname, Artists.lname, COUNT(*) AS oil_paintings_count\nFROM Artists\nJOIN Paintings ON Artists.artistID = Paintings.painterID\nWHERE Paintings.medium = 'oil'\nGROUP BY Artists.artistID, Artists.fname, Artists.lname\nHAVING COUNT(*) = (\n    SELECT MAX(painting_count) FROM (\n        SELECT COUNT(*) AS painting_count\n        FROM Paintings\n        WHERE medium = 'oil'\n        GROUP BY painterID\n    ) AS subquery\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT A.artistID, A.fname, A.lname, COUNT(P.paintingID) AS oil_paintings_count\nFROM Artists A\nJOIN Paintings P ON A.artistID = P.painterID\nWHERE P.medium = 'oil'\nGROUP BY A.artistID, A.fname, A.lname\nORDER BY oil_paintings_count DESC\nLIMIT 1;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "WITH OilPaintingCounts AS (\n  SELECT painterID, COUNT(*) AS oil_painting_count\n  FROM Paintings\n  WHERE medium LIKE '%oil%'\n  GROUP BY painterID\n), MaxCount AS (\n  SELECT MAX(oil_painting_count) AS max_count\n  FROM OilPaintingCounts\n)\nSELECT a.artistID, a.fname, a.lname\nFROM Artists a\nJOIN OilPaintingCounts opc ON a.artistID = opc.painterID\nJOIN MaxCount mc ON opc.oil_painting_count = mc.max_count;",
+    "score": 2.25,
+    "syntax_score": 3.0,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "OILPAINTINGCOUNTS",
+        "OILPAINTINGCOUNTS",
+        "MAXCOUNT"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "WITH OilCounts AS (\n  SELECT painterID, COUNT(*) AS oil_painting_count\n  FROM Paintings\n  WHERE LOWER(medium) LIKE '%oil%'\n  GROUP BY painterID\n), MaxCount AS (\n  SELECT MAX(oil_painting_count) AS max_count FROM OilCounts\n)\nSELECT A.artistID, A.fname, A.lname\nFROM Artists A\nJOIN OilCounts O ON A.artistID = O.painterID\nJOIN MaxCount M ON O.oil_painting_count = M.max_count;",
+    "score": 2.25,
+    "syntax_score": 3.0,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Which artists have the most paintings in oil?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "OILCOUNTS",
+        "OILCOUNTS",
+        "MAXCOUNT"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

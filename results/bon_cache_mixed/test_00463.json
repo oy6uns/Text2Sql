@@ -1,0 +1,173 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT s.bio_data\nFROM Students s\nJOIN Behaviour_Monitoring bm ON s.student_id = bm.student_id\nGROUP BY s.student_id, s.bio_data\nHAVING COUNT(DISTINCT bm.behaviour_monitoring_details) = 1\nAND bm.behaviour_monitoring_details = (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Which students only got the most common result for his or her all behaviour monitoring details? List the students' biographical information.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT s.bio_data\nFROM Students s\nJOIN Behaviour_Monitoring bm ON s.student_id = bm.student_id\nGROUP BY s.student_id, s.bio_data\nHAVING COUNT(DISTINCT bm.behaviour_monitoring_details) = 1\n   AND bm.behaviour_monitoring_details = (\n       SELECT behaviour_monitoring_details\n       FROM Behaviour_Monitoring\n       GROUP BY behaviour_monitoring_details\n       ORDER BY COUNT(*) DESC\n       LIMIT 1\n   )",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Which students only got the most common result for his or her all behaviour monitoring details? List the students' biographical information.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT s.bio_data\nFROM Students s\nJOIN Behaviour_Monitoring bm ON s.student_id = bm.student_id\nGROUP BY s.student_id, s.bio_data\nHAVING COUNT(DISTINCT bm.behaviour_monitoring_details) = 1\nAND bm.behaviour_monitoring_details = (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Which students only got the most common result for his or her all behaviour monitoring details? List the students' biographical information.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "WITH Most_Common_Behaviour AS (\n  SELECT behaviour_monitoring_details\n  FROM Behaviour_Monitoring\n  GROUP BY behaviour_monitoring_details\n  ORDER BY COUNT(*) DESC\n  LIMIT 1\n),\nStudent_Behaviour_Counts AS (\n  SELECT\n    student_id,\n    COUNT(*) AS total_behaviours,\n    SUM(CASE WHEN behaviour_monitoring_details = (SELECT behaviour_monitoring_details FROM Most_Common_Behaviour) THEN 1 ELSE 0 END) AS matching_behaviours\n  FROM Behaviour_Monitoring\n  GROUP BY student_id\n)\nSELECT s.bio_data\nFROM Students s\nJOIN Student_Behaviour_Counts sbc ON s.student_id = sbc.student_id\nWHERE sbc.total_behaviours = sbc.matching_behaviours\nAND sbc.total_behaviours > 0;",
+    "score": 1.75,
+    "syntax_score": 3.0,
+    "schema_score": -2.25,
+    "execution_score": 1.0,
+    "question": "Which students only got the most common result for his or her all behaviour monitoring details? List the students' biographical information.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -2.25,
+      "unknown_tables": [
+        "MOST_COMMON_BEHAVIOUR",
+        "STUDENT_BEHAVIOUR_COUNTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "WITH MostCommonBehavior AS (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n), StudentBehaviorCheck AS (\n    SELECT \n        student_id,\n        BOOL_AND(behaviour_monitoring_details = (SELECT behaviour_monitoring_details FROM MostCommonBehavior)) AS all_common\n    FROM Behaviour_Monitoring\n    GROUP BY student_id\n)\nSELECT s.bio_data\nFROM Students s\nJOIN StudentBehaviorCheck sbc ON s.student_id = sbc.student_id\nWHERE sbc.all_common = TRUE;",
+    "score": -99.25,
+    "syntax_score": 3.0,
+    "schema_score": -2.25,
+    "execution_score": -100.0,
+    "question": "Which students only got the most common result for his or her all behaviour monitoring details? List the students' biographical information.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -2.25,
+      "unknown_tables": [
+        "MOSTCOMMONBEHAVIOR",
+        "STUDENTBEHAVIORCHECK"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: BOOL_AND",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,5 @@
+SELECT DISTINCT s.sid, s.name
+FROM Sailors s
+JOIN Reserves r ON s.sid = r.sid
+JOIN Boats b ON r.bid = b.bid
+WHERE b.color IN ('red', 'blue');

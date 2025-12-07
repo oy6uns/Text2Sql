@@ -1,0 +1,1 @@
+SELECT process_outcome_code, process_outcome_description FROM Process_Outcomes;

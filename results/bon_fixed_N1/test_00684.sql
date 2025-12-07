@@ -1,0 +1,4 @@
+SELECT Parent_Document_Object_ID AS Parent_Document_ID, COUNT(Document_Object_ID) AS Number_of_Child_Documents
+FROM Document_Objects
+WHERE Parent_Document_Object_ID IS NOT NULL
+GROUP BY Parent_Document_Object_ID;

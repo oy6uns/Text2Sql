@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT payment_method_code) AS number_of_payment_methods FROM Customer_Payment_Methods;

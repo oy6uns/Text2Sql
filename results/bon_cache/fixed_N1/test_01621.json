@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.Capital\nFROM driver d\nJOIN country c ON d.Country = c.Country_Id\nWHERE CAST(d.Points AS FLOAT) = (\n    SELECT MAX(CAST(Points AS FLOAT)) FROM driver\n);",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What is the capital of the country where the driver with the most points is from?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

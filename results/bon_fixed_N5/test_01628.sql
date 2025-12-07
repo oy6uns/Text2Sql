@@ -1,0 +1,4 @@
+SELECT Make
+FROM driver
+GROUP BY Make
+HAVING COUNT(DISTINCT Driver_ID) >= 3;

@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT b.Title\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name = 'Peter Doe'\nAND b.ISBN NOT IN (\n    SELECT b2.ISBN\n    FROM Book b2\n    JOIN Books_Order bo2 ON b2.ISBN = bo2.ISBN\n    JOIN Orders o2 ON bo2.IdOrder = o2.IdOrder\n    JOIN Client c2 ON o2.IdClient = c2.IdClient\n    WHERE c2.Name = 'James Smith'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the title of books which are ordered by client Peter Doe but not client James Smith.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT B.Title\nFROM Book B\nJOIN Books_Order BO ON B.ISBN = BO.ISBN\nJOIN Orders O ON BO.IdOrder = O.IdOrder\nJOIN Client C ON O.IdClient = C.IdClient\nWHERE C.Name = 'Peter Doe'\nAND B.ISBN NOT IN (\n    SELECT BO2.ISBN\n    FROM Books_Order BO2\n    JOIN Orders O2 ON BO2.IdOrder = O2.IdOrder\n    JOIN Client C2 ON O2.IdClient = C2.IdClient\n    WHERE C2.Name = 'James Smith'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the title of books which are ordered by client Peter Doe but not client James Smith.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT b.Title\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name = 'Peter Doe'\nAND b.ISBN NOT IN (\n    SELECT b2.ISBN\n    FROM Book b2\n    JOIN Books_Order bo2 ON b2.ISBN = bo2.ISBN\n    JOIN Orders o2 ON bo2.IdOrder = o2.IdOrder\n    JOIN Client c2 ON o2.IdClient = c2.IdClient\n    WHERE c2.Name = 'James Smith'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the title of books which are ordered by client Peter Doe but not client James Smith.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT b.Title\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name = 'Peter Doe'\nAND b.ISBN NOT IN (\n    SELECT b2.ISBN\n    FROM Book b2\n    JOIN Books_Order bo2 ON b2.ISBN = bo2.ISBN\n    JOIN Orders o2 ON bo2.IdOrder = o2.IdOrder\n    JOIN Client c2 ON o2.IdClient = c2.IdClient\n    WHERE c2.Name = 'James Smith'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the title of books which are ordered by client Peter Doe but not client James Smith.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT b.Title\nFROM Book b\nJOIN Books_Order bo ON b.ISBN = bo.ISBN\nJOIN Orders o ON bo.IdOrder = o.IdOrder\nJOIN Client c ON o.IdClient = c.IdClient\nWHERE c.Name = 'Peter Doe'\nAND b.ISBN NOT IN (\n    SELECT b2.ISBN\n    FROM Book b2\n    JOIN Books_Order bo2 ON b2.ISBN = bo2.ISBN\n    JOIN Orders o2 ON bo2.IdOrder = o2.IdOrder\n    JOIN Client c2 ON o2.IdClient = c2.IdClient\n    WHERE c2.Name = 'James Smith'\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 0.0,
+    "question": "Find the title of books which are ordered by client Peter Doe but not client James Smith.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

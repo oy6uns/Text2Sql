@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Author a\nJOIN Author_list al ON a.author_id = al.author_id\nGROUP BY a.name\nORDER BY paper_count DESC;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 0.5,
+    "question": "How many papers did each author publish, ordered by number of papers?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 20312,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

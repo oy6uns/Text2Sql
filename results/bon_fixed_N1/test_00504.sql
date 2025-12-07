@@ -1,0 +1,4 @@
+SELECT s.student_id, s.bio_data, COUNT(c.class_id) AS number_of_courses
+FROM Students s
+LEFT JOIN Classes c ON s.student_id = c.student_id
+GROUP BY s.student_id, s.bio_data;

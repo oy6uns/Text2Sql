@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, g.Price\nFROM goods g\nJOIN items i ON g.Id = i.Item\nWHERE g.Flavor = 'chocolate'\nGROUP BY g.Id, g.Flavor, g.Food, g.Price\nHAVING COUNT(i.Item) <= 10;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "What are the items with chocolate flavor that were purchased at most 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT g.Id, g.Flavor, g.Food, COUNT(*) AS purchase_count\nFROM items i\nJOIN goods g ON i.Item = g.Id\nWHERE g.Flavor = 'chocolate'\nGROUP BY g.Id, g.Flavor, g.Food\nHAVING COUNT(*) <= 10;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "What are the items with chocolate flavor that were purchased at most 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT goods.Id, goods.Flavor, goods.Food\nFROM goods\nJOIN items ON goods.Id = items.Item\nWHERE goods.Flavor = 'chocolate'\nGROUP BY goods.Id, goods.Flavor, goods.Food\nHAVING COUNT(items.Item) <= 10;",
+    "score": 3.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 0.0,
+    "question": "What are the items with chocolate flavor that were purchased at most 10 times.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

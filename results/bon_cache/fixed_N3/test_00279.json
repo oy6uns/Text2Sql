@@ -1,0 +1,113 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH PaymentMethodCounts AS (\n  SELECT payment_method_code, COUNT(*) AS customer_count\n  FROM Customers\n  GROUP BY payment_method_code\n),\nMinCount AS (\n  SELECT MIN(customer_count) AS min_customer_count\n  FROM PaymentMethodCounts\n)\nSELECT c.customer_name, c.payment_method_code\nFROM Customers c\nJOIN PaymentMethodCounts pmc ON c.payment_method_code = pmc.payment_method_code\nJOIN MinCount mc ON pmc.customer_count = mc.min_customer_count;",
+    "score": 2.75,
+    "syntax_score": 3.0,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Show all customer names with the  payment method code used by least number of customers.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "PAYMENTMETHODCOUNTS",
+        "PAYMENTMETHODCOUNTS",
+        "MINCOUNT"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH PaymentMethodCounts AS (\n  SELECT payment_method_code, COUNT(*) AS customer_count\n  FROM Customers\n  GROUP BY payment_method_code\n),\nMinCount AS (\n  SELECT MIN(customer_count) AS min_count\n  FROM PaymentMethodCounts\n),\nLeastUsedPaymentMethods AS (\n  SELECT payment_method_code\n  FROM PaymentMethodCounts, MinCount\n  WHERE customer_count = min_count\n)\nSELECT customer_name, payment_method_code\nFROM Customers\nWHERE payment_method_code IN (SELECT payment_method_code FROM LeastUsedPaymentMethods);",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Show all customer names with the  payment method code used by least number of customers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "PAYMENTMETHODCOUNTS",
+        "PAYMENTMETHODCOUNTS",
+        "LEASTUSEDPAYMENTMETHODS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH PaymentMethodCounts AS (\n    SELECT payment_method_code, COUNT(*) AS customer_count\n    FROM Customers\n    GROUP BY payment_method_code\n), MinCount AS (\n    SELECT MIN(customer_count) AS min_customer_count\n    FROM PaymentMethodCounts\n), LeastUsedPaymentMethods AS (\n    SELECT payment_method_code\n    FROM PaymentMethodCounts, MinCount\n    WHERE customer_count = min_customer_count\n)\nSELECT customer_name, payment_method_code\nFROM Customers\nWHERE payment_method_code IN (SELECT payment_method_code FROM LeastUsedPaymentMethods);",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Show all customer names with the  payment method code used by least number of customers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "PAYMENTMETHODCOUNTS",
+        "PAYMENTMETHODCOUNTS",
+        "LEASTUSEDPAYMENTMETHODS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

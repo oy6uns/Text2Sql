@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT a.fname, a.lname\nFROM Artists a\nJOIN Paintings p1 ON a.artistID = p1.painterID\nJOIN Paintings p2 ON a.artistID = p2.painterID\nWHERE p1.medium = 'oil' AND p2.medium = 'lithographic'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "What are the first and last names of artists who have painted using both oil and lithographic mediums?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT a.fname, a.lname\nFROM Artists a\nJOIN Paintings p1 ON a.artistID = p1.painterID\nJOIN Paintings p2 ON a.artistID = p2.painterID\nWHERE LOWER(p1.medium) LIKE '%oil%'\n  AND LOWER(p2.medium) LIKE '%lithographic%'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "What are the first and last names of artists who have painted using both oil and lithographic mediums?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT a.fname, a.lname\nFROM Artists a\nJOIN Paintings p1 ON a.artistID = p1.painterID\nJOIN Paintings p2 ON a.artistID = p2.painterID\nWHERE LOWER(p1.medium) LIKE '%oil%'\n  AND LOWER(p2.medium) LIKE '%lithographic%'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "What are the first and last names of artists who have painted using both oil and lithographic mediums?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT a.fname, a.lname\nFROM Artists a\nJOIN Paintings p1 ON a.artistID = p1.painterID\nJOIN Paintings p2 ON a.artistID = p2.painterID\nWHERE p1.medium = 'oil' AND p2.medium = 'lithographic'",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 0.0,
+    "question": "What are the first and last names of artists who have painted using both oil and lithographic mediums?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT a.fname, a.lname\nFROM Artists a\nJOIN Paintings p1 ON a.artistID = p1.painterID\nJOIN Paintings p2 ON a.artistID = p2.painterID\nWHERE p1.medium ILIKE '%oil%'\n  AND p2.medium ILIKE '%lithographic%'",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "What are the first and last names of artists who have painted using both oil and lithographic mediums?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ILIKE\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

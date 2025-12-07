@@ -1,0 +1,1 @@
+SELECT DISTINCT Franchise FROM game WHERE Franchise IS NOT NULL;

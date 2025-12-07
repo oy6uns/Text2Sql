@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n  MIN(date_order_placed) AS earliest_order_date,\n  date_order_placed\nFROM Orders\nWHERE order_id IN (\n  SELECT order_id\n  FROM Order_Items\n  GROUP BY order_id\n  HAVING COUNT(order_item_id) > 1\n)\nGROUP BY date_order_placed\nORDER BY date_order_placed;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the dates of the earliest order and the dates of all orders with more than 1 item?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n  (SELECT MIN(date_order_placed) FROM Orders) AS earliest_order_date,\n  date_order_placed\nFROM Orders\nWHERE order_id IN (\n  SELECT order_id\n  FROM Order_Items\n  GROUP BY order_id\n  HAVING COUNT(order_item_id) > 1\n)\nORDER BY date_order_placed;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the dates of the earliest order and the dates of all orders with more than 1 item?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n  (SELECT MIN(date_order_placed) FROM Orders) AS earliest_order_date,\n  O.date_order_placed AS order_date_with_more_than_one_item\nFROM Orders O\nJOIN (\n  SELECT order_id\n  FROM Order_Items\n  GROUP BY order_id\n  HAVING COUNT(*) > 1\n) multi_item_orders ON O.order_id = multi_item_orders.order_id;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the dates of the earliest order and the dates of all orders with more than 1 item?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 4,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT \n  MIN(date_order_placed) AS earliest_order_date\nFROM Orders\nUNION ALL\nSELECT \n  date_order_placed\nFROM Orders\nWHERE order_id IN (\n  SELECT order_id\n  FROM Order_Items\n  GROUP BY order_id\n  HAVING COUNT(*) > 1\n)\nORDER BY earliest_order_date;",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the dates of the earliest order and the dates of all orders with more than 1 item?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT \n  MIN(date_order_placed) AS earliest_order_date\nFROM Orders;\n\nSELECT \n  date_order_placed\nFROM Orders\nWHERE order_id IN (\n  SELECT order_id\n  FROM Order_Items\n  GROUP BY order_id\n  HAVING COUNT(order_item_id) > 1\n);",
+    "score": -96.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": -100.0,
+    "question": "What are the dates of the earliest order and the dates of all orders with more than 1 item?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "You can only execute one statement at a time.",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

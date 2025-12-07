@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT staff_id\nFROM Staff_in_Meetings\nGROUP BY staff_id\nHAVING COUNT(meeting_id) = (\n    SELECT MIN(meeting_count) FROM (\n        SELECT staff_id, COUNT(meeting_id) AS meeting_count\n        FROM Staff_in_Meetings\n        GROUP BY staff_id\n        HAVING COUNT(meeting_id) > 0\n    ) sub\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the staff id of the staff who attended the least meetings but attended some meeting?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT staff_id\nFROM Staff_in_Meetings\nGROUP BY staff_id\nHAVING COUNT(meeting_id) = (\n    SELECT MIN(meeting_count) FROM (\n        SELECT staff_id, COUNT(meeting_id) AS meeting_count\n        FROM Staff_in_Meetings\n        GROUP BY staff_id\n        HAVING COUNT(meeting_id) > 0\n    ) sub\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the staff id of the staff who attended the least meetings but attended some meeting?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT staff_id\nFROM Staff_in_Meetings\nGROUP BY staff_id\nHAVING COUNT(meeting_id) = (\n    SELECT MIN(meeting_count) FROM (\n        SELECT staff_id, COUNT(meeting_id) AS meeting_count\n        FROM Staff_in_Meetings\n        GROUP BY staff_id\n        HAVING COUNT(meeting_id) > 0\n    ) AS sub\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the staff id of the staff who attended the least meetings but attended some meeting?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT staff_id\nFROM Staff_in_Meetings\nGROUP BY staff_id\nHAVING COUNT(meeting_id) = (\n    SELECT MIN(meeting_count)\n    FROM (\n        SELECT staff_id, COUNT(meeting_id) AS meeting_count\n        FROM Staff_in_Meetings\n        GROUP BY staff_id\n    ) sub\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the staff id of the staff who attended the least meetings but attended some meeting?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT staff_id\nFROM Staff_in_Meetings\nGROUP BY staff_id\nHAVING COUNT(meeting_id) = (\n    SELECT MIN(meeting_count)\n    FROM (\n        SELECT staff_id, COUNT(meeting_id) AS meeting_count\n        FROM Staff_in_Meetings\n        GROUP BY staff_id\n    ) sub\n)",
+    "score": 4.75,
+    "syntax_score": 3.0,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What is the staff id of the staff who attended the least meetings but attended some meeting?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 8,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

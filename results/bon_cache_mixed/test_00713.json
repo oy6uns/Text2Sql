@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n  ds.Document_Subset_ID, \n  ds.Document_Subset_Name, \n  COUNT(DISTINCT dsm.Document_Object_ID) AS number_of_documents\nFROM Document_Subsets ds\nJOIN Document_Subset_Members dsm ON ds.Document_Subset_ID = dsm.Document_Subset_ID\nGROUP BY ds.Document_Subset_ID, ds.Document_Subset_Name\nORDER BY number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which document subset has most of number of distinct documents ? List subset id , name and number of documents .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n    dsm.Document_Subset_ID, \n    ds.Document_Subset_Name, \n    COUNT(DISTINCT dsm.Document_Object_ID) AS number_of_documents\nFROM \n    Document_Subset_Members dsm\nJOIN \n    Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nGROUP BY \n    dsm.Document_Subset_ID, ds.Document_Subset_Name\nORDER BY \n    number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which document subset has most of number of distinct documents ? List subset id , name and number of documents .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n  dsm.Document_Subset_ID, \n  ds.Document_Subset_Name, \n  COUNT(DISTINCT dsm.Related_Document_Object_ID) AS number_of_documents\nFROM Document_Subset_Members dsm\nJOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nGROUP BY dsm.Document_Subset_ID, ds.Document_Subset_Name\nORDER BY number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which document subset has most of number of distinct documents ? List subset id , name and number of documents .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT \n  dsm.Document_Subset_ID, \n  ds.Document_Subset_Name, \n  COUNT(DISTINCT dsm.Related_Document_Object_ID) AS number_of_documents\nFROM \n  Document_Subset_Members dsm\nJOIN \n  Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nGROUP BY \n  dsm.Document_Subset_ID, ds.Document_Subset_Name\nORDER BY \n  number_of_documents DESC\nLIMIT 1;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Which document subset has most of number of distinct documents ? List subset id , name and number of documents .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT dsm.Document_Subset_ID, ds.Document_Subset_Name, COUNT(DISTINCT dsm.Document_Object_ID) AS number_of_documents\nFROM Document_Subset_Members dsm\nJOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nGROUP BY dsm.Document_Subset_ID, ds.Document_Subset_Name\nORDER BY number_of_documents DESC\nFETCH FIRST 1 ROW ONLY;",
+    "score": -96.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "Which document subset has most of number of distinct documents ? List subset id , name and number of documents .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FETCH\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

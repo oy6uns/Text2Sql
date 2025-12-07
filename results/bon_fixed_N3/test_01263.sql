@@ -1,0 +1,1 @@
+SELECT DISTINCT title FROM Paintings ORDER BY title ASC;

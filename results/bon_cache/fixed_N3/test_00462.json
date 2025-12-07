@@ -1,0 +1,109 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT s.bio_data, s.student_details\nFROM Students s\nJOIN Behaviour_Monitoring bm ON s.student_id = bm.student_id\nWHERE bm.behaviour_monitoring_details IN (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    HAVING COUNT(DISTINCT student_id) = 3\n)\nAND s.student_id IN (\n    SELECT student_id\n    FROM Transcripts\n    WHERE transcript_details = (\n        SELECT transcript_details\n        FROM Transcripts\n        GROUP BY transcript_details\n        ORDER BY COUNT(DISTINCT student_id) DESC\n        LIMIT 1\n    )\n);",
+    "score": 3.75,
+    "syntax_score": 2.5,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Find the biographical data and details of students who got not only the most common result but also a result that is obtained by 3 students in behaviour monitoring.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH MostCommonResult AS (\n    SELECT behaviour_monitoring_details, COUNT(DISTINCT student_id) AS cnt\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY cnt DESC\n    LIMIT 1\n),\nResultsWithThreeStudents AS (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    HAVING COUNT(DISTINCT student_id) = 3\n),\nStudentsWithBothResults AS (\n    SELECT bm1.student_id\n    FROM Behaviour_Monitoring bm1\n    JOIN MostCommonResult mcr ON bm1.behaviour_monitoring_details = mcr.behaviour_monitoring_details\n    WHERE bm1.student_id IN (\n        SELECT bm2.student_id\n        FROM Behaviour_Monitoring bm2\n        WHERE bm2.behaviour_monitoring_details IN (SELECT behaviour_monitoring_details FROM ResultsWithThreeStudents)\n    )\n    GROUP BY bm1.student_id\n)\nSELECT s.bio_data, s.student_details\nFROM Students s\nJOIN StudentsWithBothResults swbr ON s.student_id = swbr.student_id;",
+    "score": 1.75,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Find the biographical data and details of students who got not only the most common result but also a result that is obtained by 3 students in behaviour monitoring.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "MOSTCOMMONRESULT",
+        "RESULTSWITHTHREESTUDENTS",
+        "STUDENTSWITHBOTHRESULTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH MostCommonResults AS (\n  SELECT transcript_details AS result, COUNT(DISTINCT student_id) AS student_count\n  FROM Transcripts\n  GROUP BY transcript_details\n  ORDER BY student_count DESC\n  LIMIT 1\n),\nBehaviourResults AS (\n  SELECT behaviour_monitoring_details AS result, COUNT(DISTINCT student_id) AS student_count\n  FROM Behaviour_Monitoring\n  GROUP BY behaviour_monitoring_details\n  HAVING student_count = 3\n),\nCommonResults AS (\n  SELECT result FROM MostCommonResults\n  INTERSECT\n  SELECT result FROM BehaviourResults\n)\nSELECT s.bio_data, s.student_details\nFROM Students s\nJOIN Transcripts t ON s.student_id = t.student_id\nWHERE t.transcript_details IN (SELECT result FROM CommonResults)",
+    "score": 0.25,
+    "syntax_score": 2.5,
+    "schema_score": -2.25,
+    "execution_score": 0.0,
+    "question": "Find the biographical data and details of students who got not only the most common result but also a result that is obtained by 3 students in behaviour monitoring.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -2.25,
+      "unknown_tables": [
+        "MOSTCOMMONRESULTS",
+        "BEHAVIOURRESULTS",
+        "COMMONRESULTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

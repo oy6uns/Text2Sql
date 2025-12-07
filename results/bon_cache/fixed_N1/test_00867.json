@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT s.sid, s.name\nFROM Sailors s\nWHERE s.sid IN (\n    SELECT r1.sid\n    FROM Reserves r1\n    JOIN Boats b1 ON r1.bid = b1.bid\n    WHERE b1.color = 'red'\n) AND s.sid IN (\n    SELECT r2.sid\n    FROM Reserves r2\n    JOIN Boats b2 ON r2.bid = b2.bid\n    WHERE b2.color = 'blue'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name and id of Sailors (sid) that reserved red and blue boat.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

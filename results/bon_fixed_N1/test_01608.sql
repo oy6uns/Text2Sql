@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM driver WHERE CAST(Points AS NUMBER) < 150;

@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT p.PackageNumber\nFROM Package p\nJOIN Shipment s ON p.Shipment = s.ShipmentID\nJOIN Planet pl ON s.Planet = pl.PlanetID\nLEFT JOIN Client sender ON p.Sender = sender.AccountNumber\nLEFT JOIN Client recipient ON p.Recipient = recipient.AccountNumber\nLEFT JOIN Employee e ON e.Name = 'Zapp Brannigan'\nWHERE pl.Name = 'Omicron Persei 8' OR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    JOIN Package pk ON c.AccountNumber = pk.Sender\n    JOIN Employee em ON em.Name = 'Zapp Brannigan'\n    WHERE em.EmployeeID = (SELECT EmployeeID FROM Employee WHERE Name = 'Zapp Brannigan')\n) OR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    WHERE EXISTS (\n        SELECT 1 FROM Employee e WHERE e.Name = 'Zapp Brannigan' AND e.EmployeeID = p.Sender\n    )\n) OR EXISTS (\n    SELECT 1 FROM Employee e WHERE e.Name = 'Zapp Brannigan' AND e.EmployeeID = p.Sender\n) OR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    WHERE c.AccountNumber IN (\n        SELECT p2.Sender FROM Package p2\n        JOIN Employee e ON e.Name = 'Zapp Brannigan' WHERE e.EmployeeID = p2.Sender\n    )\n)\nOR p.Sender IN (\n    SELECT p3.Sender FROM Package p3\n    JOIN Employee e ON e.Name = 'Zapp Brannigan' WHERE e.EmployeeID = p3.Sender\n)\nOR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    WHERE c.AccountNumber IN (\n        SELECT p4.Sender FROM Package p4\n        JOIN Employee e ON e.Name = 'Zapp Brannigan' AND e.EmployeeID = p4.Sender\n    )\n)\nOR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    WHERE c.AccountNumber IN (\n        SELECT p5.Sender FROM Package p5\n        JOIN Employee e ON e.Name = 'Zapp Brannigan' AND e.EmployeeID = p5.Sender\n    )\n)\nOR p.Sender IN (\n    SELECT c.AccountNumber FROM Client c\n    WHERE c.AccountNumber IN (\n        SELECT p6.Sender FROM Package p6\n        JOIN Employee e ON e.Name = 'Zapp Brannigan' AND",
+    "score": -98.5,
+    "syntax_score": 0.5,
+    "schema_score": 1.0,
+    "execution_score": -100.0,
+    "question": "List package number of packages shipped in Omicron Persei 8 planet or sent by Zapp Brannigan.",
+    "syntax_detail": {
+      "total": 0.5,
+      "missing_quote": false,
+      "paren_unbalanced": true,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.0,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "incomplete input",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

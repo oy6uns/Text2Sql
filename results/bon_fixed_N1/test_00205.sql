@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Comments) FROM Student_Answers WHERE Comments IS NOT NULL;

@@ -1,0 +1,6 @@
+SELECT painterID AS artistID
+FROM Paintings
+WHERE year < 1900
+GROUP BY painterID
+ORDER BY COUNT(*) DESC
+LIMIT 1;

@@ -1,0 +1,38 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH LindaCity AS (\n  SELECT S.city_code\n  FROM Student S\n  WHERE S.Fname = 'Linda' AND S.LName = 'Smith'\n), Distances AS (\n  SELECT S.Fname, S.LName, D.distance\n  FROM Student S\n  JOIN LindaCity LC ON 1=1\n  LEFT JOIN Direct_distance D ON \n    (D.city1_code = LC.city_code AND D.city2_code = S.city_code) OR\n    (D.city2_code = LC.city_code AND D.city1_code = S.city_code)\n  WHERE NOT (S.Fname = 'Linda' AND S.LName = 'Smith')\n)\nSELECT Fname, LName\nFROM Distances\nORDER BY distance DESC NULLS LAST\nLIMIT 1;",
+    "score": 3.25,
+    "syntax_score": 3.0,
+    "schema_score": -0.75,
+    "execution_score": 1.0,
+    "question": "What is the first name and last name of the student living furthest to Linda Smith?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -0.75,
+      "unknown_tables": [
+        "LINDACITY",
+        "DISTANCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

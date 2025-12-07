@@ -1,0 +1,1 @@
+SELECT Driver FROM driver ORDER BY CAST(Points AS FLOAT) DESC;

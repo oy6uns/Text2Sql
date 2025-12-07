@@ -1,0 +1,1 @@
+SELECT Type, Title FROM book WHERE Book_ID NOT IN (SELECT DISTINCT Book_ID FROM review);

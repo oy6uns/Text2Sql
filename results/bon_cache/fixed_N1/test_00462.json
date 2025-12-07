@@ -1,0 +1,39 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH Most_Common_Results AS (\n    SELECT behaviour_monitoring_details, COUNT(DISTINCT student_id) AS student_count\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY student_count DESC\n    LIMIT 1\n),\nResults_With_Three_Students AS (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    HAVING COUNT(DISTINCT student_id) = 3\n),\nStudents_With_Both_Results AS (\n    SELECT bm1.student_id\n    FROM Behaviour_Monitoring bm1\n    JOIN Most_Common_Results mcr ON bm1.behaviour_monitoring_details = mcr.behaviour_monitoring_details\n    JOIN Behaviour_Monitoring bm2 ON bm1.student_id = bm2.student_id\n    JOIN Results_With_Three_Students rws ON bm2.behaviour_monitoring_details = rws.behaviour_monitoring_details\n    GROUP BY bm1.student_id\n)\nSELECT s.bio_data, s.student_details\nFROM Students s\nWHERE s.student_id IN (SELECT student_id FROM Students_With_Both_Results);",
+    "score": 1.75,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Find the biographical data and details of students who got not only the most common result but also a result that is obtained by 3 students in behaviour monitoring.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "MOST_COMMON_RESULTS",
+        "RESULTS_WITH_THREE_STUDENTS",
+        "STUDENTS_WITH_BOTH_RESULTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

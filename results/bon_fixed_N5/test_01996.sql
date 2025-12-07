@@ -1,0 +1,7 @@
+SELECT Book_Series
+FROM book
+WHERE CAST(Sale_Amount AS NUMBER) > 1000
+INTERSECT
+SELECT Book_Series
+FROM book
+WHERE CAST(Sale_Amount AS NUMBER) < 500;

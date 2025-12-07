@@ -1,0 +1,5 @@
+SELECT venue
+FROM Paper
+GROUP BY venue
+ORDER BY COUNT(*) ASC
+LIMIT 1;

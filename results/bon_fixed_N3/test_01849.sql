@@ -1,0 +1,1 @@
+SELECT DISTINCT Rating FROM Movies;

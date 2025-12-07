@@ -1,0 +1,4 @@
+SELECT Make, COUNT(*) AS Count
+FROM driver
+WHERE CAST(Points AS NUMBER) > 150
+GROUP BY Make;

@@ -1,0 +1,3 @@
+SELECT Team 
+FROM team 
+WHERE Team_ID NOT IN (SELECT DISTINCT Team_ID FROM team_driver);

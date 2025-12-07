@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT COUNT(*) \nFROM Package p\nJOIN Client sender ON p.Sender = sender.AccountNumber\nJOIN Client recipient ON p.Recipient = recipient.AccountNumber\nJOIN Employee e ON sender.AccountNumber = e.EmployeeID\nWHERE sender.Name = 'Ogden Wernstrom' AND recipient.Name = 'Leo Wong';",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Count the number of packages sent by Ogden Wernstrom and received by Leo Wong.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT COUNT(*) \nFROM Package p\nJOIN Client sender ON p.Sender = sender.AccountNumber\nJOIN Client recipient ON p.Recipient = recipient.AccountNumber\nJOIN Employee e ON sender.AccountNumber = e.EmployeeID\nWHERE sender.Name = 'Ogden Wernstrom' AND recipient.Name = 'Leo Wong';",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Count the number of packages sent by Ogden Wernstrom and received by Leo Wong.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT COUNT(*)\nFROM Package p\nJOIN Client sender ON p.Sender = sender.AccountNumber\nJOIN Client recipient ON p.Recipient = recipient.AccountNumber\nJOIN Employee e ON sender.Name = 'Ogden Wernstrom'\nJOIN Client s ON p.Sender = s.AccountNumber\nJOIN Client r ON p.Recipient = r.AccountNumber\nWHERE sender.Name = 'Ogden Wernstrom' AND recipient.Name = 'Leo Wong';",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Count the number of packages sent by Ogden Wernstrom and received by Leo Wong.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT COUNT(*) \nFROM Package p\nJOIN Client sender ON p.Sender = sender.AccountNumber\nJOIN Client recipient ON p.Recipient = recipient.AccountNumber\nJOIN Employee e ON sender.AccountNumber = (SELECT AccountNumber FROM Client WHERE Name = 'Ogden Wernstrom')\nWHERE sender.Name = 'Ogden Wernstrom' AND recipient.Name = 'Leo Wong';",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Count the number of packages sent by Ogden Wernstrom and received by Leo Wong.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT COUNT(*) \nFROM Package p\nJOIN Client sender ON p.Sender = sender.AccountNumber\nJOIN Client recipient ON p.Recipient = recipient.AccountNumber\nJOIN Employee e_sender ON sender.AccountNumber = p.Sender\nJOIN Employee e ON e_sender.EmployeeID = e.EmployeeID\nWHERE p.Sender IN (\n    SELECT AccountNumber FROM Client WHERE AccountNumber IN (\n        SELECT Sender FROM Package p2\n        JOIN Client c2 ON p2.Sender = c2.AccountNumber\n        JOIN Employee e2 ON e2.Name = 'Ogden Wernstrom' AND p2.Sender = c2.AccountNumber\n    )\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client WHERE AccountNumber IN (\n        SELECT Sender FROM Package p2\n        JOIN Client c2 ON p2.Sender = c2.AccountNumber\n    )\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p.Sender IN (\n    SELECT AccountNumber FROM Client\n)\nAND p",
+    "score": -95.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "Count the number of packages sent by Ogden Wernstrom and received by Leo Wong.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such column: p",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT COUNT(DISTINCT a.author_id)\nFROM Author a\nWHERE a.author_id NOT IN (\n    SELECT al.author_id\n    FROM Author_list al\n    JOIN Citation c ON al.paper_id = c.cited_paper_id\n    GROUP BY al.author_id, al.paper_id\n    HAVING COUNT(c.paper_id) > 50\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the number of authors who did not publish any paper that is cited more than 50 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT COUNT(DISTINCT a.author_id) \nFROM Author a\nWHERE a.author_id NOT IN (\n    SELECT al.author_id\n    FROM Author_list al\n    JOIN (\n        SELECT c.cited_paper_id, COUNT(*) AS citation_count\n        FROM Citation c\n        GROUP BY c.cited_paper_id\n        HAVING COUNT(*) > 50\n    ) c50 ON al.paper_id = c50.cited_paper_id\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the number of authors who did not publish any paper that is cited more than 50 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT COUNT(DISTINCT a.author_id)\nFROM Author a\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Author_list al\n    JOIN Citation c ON al.paper_id = c.cited_paper_id\n    WHERE al.author_id = a.author_id\n    GROUP BY al.paper_id\n    HAVING COUNT(c.paper_id) > 50\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the number of authors who did not publish any paper that is cited more than 50 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT COUNT(DISTINCT a.author_id)\nFROM Author a\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM Author_list al\n    JOIN Citation c ON al.paper_id = c.cited_paper_id\n    WHERE al.author_id = a.author_id\n    GROUP BY al.paper_id\n    HAVING COUNT(c.paper_id) > 50\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the number of authors who did not publish any paper that is cited more than 50 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT COUNT(DISTINCT a.author_id)\nFROM Author a\nWHERE a.author_id NOT IN (\n    SELECT DISTINCT al.author_id\n    FROM Author_list al\n    JOIN (\n        SELECT cited_paper_id\n        FROM Citation\n        GROUP BY cited_paper_id\n        HAVING COUNT(*) > 50\n    ) c ON al.paper_id = c.cited_paper_id\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the number of authors who did not publish any paper that is cited more than 50 times.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

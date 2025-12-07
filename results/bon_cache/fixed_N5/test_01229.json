@@ -1,0 +1,175 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT COUNT(*) \nFROM Paintings \nWHERE painterID = (\n    SELECT artistID \n    FROM Artists \n    ORDER BY (COALESCE(deathYear, YEAR(CURRENT_DATE)) - birthYear) DESC \n    LIMIT 1\n)",
+    "score": -96.75,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": -100.0,
+    "question": "What is the painting count of the artist with the longest life ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: YEAR",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT COUNT(*) \nFROM Paintings \nWHERE painterID = (\n    SELECT artistID \n    FROM Artists \n    ORDER BY (COALESCE(deathYear, EXTRACT(year FROM CURRENT_DATE)) - birthYear) DESC \n    LIMIT 1\n)",
+    "score": -99.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": -100.0,
+    "question": "What is the painting count of the artist with the longest life ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "CURRENT_DATE"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FROM\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT COUNT(*) \nFROM Paintings \nWHERE painterID = (\n  SELECT artistID \n  FROM Artists \n  ORDER BY (COALESCE(deathYear, EXTRACT(year FROM CURRENT_DATE)) - birthYear) DESC \n  LIMIT 1\n)",
+    "score": -99.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": -100.0,
+    "question": "What is the painting count of the artist with the longest life ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "CURRENT_DATE"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FROM\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT COUNT(*) AS painting_count\nFROM Paintings\nWHERE painterID = (\n    SELECT artistID\n    FROM Artists\n    ORDER BY (COALESCE(deathYear, EXTRACT(year FROM CURRENT_DATE)) - birthYear) DESC\n    LIMIT 1\n)",
+    "score": -99.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": -100.0,
+    "question": "What is the painting count of the artist with the longest life ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "CURRENT_DATE"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FROM\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT COUNT(*) \nFROM Paintings \nWHERE painterID = (\n    SELECT artistID \n    FROM Artists \n    ORDER BY (COALESCE(deathYear, EXTRACT(year FROM CURRENT_DATE)) - birthYear) DESC \n    LIMIT 1\n)",
+    "score": -99.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": -100.0,
+    "question": "What is the painting count of the artist with the longest life ?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "CURRENT_DATE"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"FROM\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

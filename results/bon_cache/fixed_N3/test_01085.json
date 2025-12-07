@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT s.name\nFROM staff s\nJOIN conference_participation cp1 ON s.staff_ID = cp1.staff_ID\nJOIN conference c1 ON cp1.Conference_ID = c1.Conference_ID\nJOIN conference_participation cp2 ON s.staff_ID = cp2.staff_ID\nJOIN conference c2 ON cp2.Conference_ID = c2.Conference_ID\nWHERE c1.Conference_Name = 'ACL' AND c2.Conference_Name = 'Naccl'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show all names who have been in both ACL and Naccl.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT s.name\nFROM staff s\nJOIN conference_participation cp1 ON s.staff_ID = cp1.staff_ID\nJOIN conference c1 ON cp1.Conference_ID = c1.Conference_ID\nJOIN conference_participation cp2 ON s.staff_ID = cp2.staff_ID\nJOIN conference c2 ON cp2.Conference_ID = c2.Conference_ID\nWHERE c1.Conference_Name = 'ACL'\n  AND c2.Conference_Name = 'Naccl'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Show all names who have been in both ACL and Naccl.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT s.name\nFROM staff s\nJOIN conference_participation cp ON s.staff_ID = cp.staff_ID\nJOIN conference c ON cp.Conference_ID = c.Conference_ID\nWHERE c.Conference_Name IN ('ACL', 'Naccl')\nGROUP BY s.name\nHAVING COUNT(DISTINCT c.Conference_Name) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Show all names who have been in both ACL and Naccl.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

@@ -1,0 +1,1 @@
+SELECT Name FROM author WHERE Author_ID NOT IN (SELECT DISTINCT Author_ID FROM book);

@@ -1,0 +1,7 @@
+SELECT DISTINCT location
+FROM Paintings
+WHERE year < 1885
+INTERSECT
+SELECT DISTINCT location
+FROM Paintings
+WHERE year > 1930;

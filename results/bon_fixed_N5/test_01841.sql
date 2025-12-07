@@ -1,0 +1,1 @@
+SELECT DISTINCT Name FROM MovieTheaters WHERE Movie IS NOT NULL;

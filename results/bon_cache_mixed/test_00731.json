@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT d.Document_Object_ID\nFROM Documents_in_Collections d\nJOIN Collections c ON d.Collection_ID = c.Collection_ID\nLEFT JOIN Document_Subset_Members dsm ON d.Document_Object_ID = dsm.Document_Object_ID\nLEFT JOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nWHERE c.Collection_Name = 'Best'\n  AND (ds.Document_Subset_Name != 'Best for 2000' OR ds.Document_Subset_Name IS NULL)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "List id of documents that in collection named Best but not in document subset Best for 2000.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 6,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT dic.Document_Object_ID\nFROM Documents_in_Collections dic\nJOIN Collections c ON dic.Collection_ID = c.Collection_ID\nWHERE c.Collection_Name = 'Best'\nAND dic.Document_Object_ID NOT IN (\n    SELECT dsm.Document_Object_ID\n    FROM Document_Subset_Members dsm\n    JOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\n    WHERE ds.Document_Subset_Name = 'Best for 2000'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "List id of documents that in collection named Best but not in document subset Best for 2000.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT dic.Document_Object_ID\nFROM Documents_in_Collections dic\nJOIN Collections c ON dic.Collection_ID = c.Collection_ID\nWHERE c.Collection_Name = 'Best'\nAND dic.Document_Object_ID NOT IN (\n    SELECT dsm.Related_Document_Object_ID\n    FROM Document_Subset_Members dsm\n    JOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\n    WHERE ds.Document_Subset_Name = 'Best for 2000'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "List id of documents that in collection named Best but not in document subset Best for 2000.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT d.Document_Object_ID\nFROM Documents_in_Collections d\nJOIN Collections c ON d.Collection_ID = c.Collection_ID\nLEFT JOIN Document_Subset_Members dm ON d.Document_Object_ID = dm.Document_Object_ID\nLEFT JOIN Document_Subsets ds ON dm.Document_Subset_ID = ds.Document_Subset_ID\nWHERE c.Collection_Name = 'Best'\n  AND (ds.Document_Subset_Name != 'Best for 2000' OR ds.Document_Subset_Name IS NULL)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "List id of documents that in collection named Best but not in document subset Best for 2000.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 6,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT d.Document_Object_ID\nFROM Documents_in_Collections d\nJOIN Collections c ON d.Collection_ID = c.Collection_ID\nLEFT JOIN Document_Subset_Members dm ON d.Document_Object_ID = dm.Related_Document_Object_ID\nLEFT JOIN Document_Subsets ds ON dm.Document_Subset_ID = ds.Document_Subset_ID\nWHERE c.Collection_Name = 'Best'\n  AND (ds.Document_Subset_Name != 'Best for 2000' OR ds.Document_Subset_Name IS NULL)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "List id of documents that in collection named Best but not in document subset Best for 2000.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 6,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

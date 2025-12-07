@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT s.Service_Details\nFROM Services s\nJOIN Customers_and_Services cas ON s.Service_ID = cas.Service_ID\nJOIN Customers c ON cas.Customer_ID = c.Customer_ID\nLEFT JOIN Customer_Interactions ci ON s.Service_ID = ci.Service_ID\nWHERE c.Customer_Details = 'Hardy Kutch' OR ci.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Which services are used by the customer \"Hardy Kutch\" or are rated as \"good\" in a customer interaction? Give me the service details.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT s.Service_Details\nFROM Services s\nJOIN Customers_and_Services cs ON s.Service_ID = cs.Service_ID\nJOIN Customers c ON cs.Customer_ID = c.Customer_ID\nLEFT JOIN Customer_Interactions ci ON s.Service_ID = ci.Service_ID\nWHERE c.Customer_Details = 'Hardy Kutch'\n   OR ci.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Which services are used by the customer \"Hardy Kutch\" or are rated as \"good\" in a customer interaction? Give me the service details.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT s.Service_Details\nFROM Services s\nJOIN Customers_and_Services cas ON s.Service_ID = cas.Service_ID\nJOIN Customers c ON cas.Customer_ID = c.Customer_ID\nLEFT JOIN Customer_Interactions ci ON s.Service_ID = ci.Service_ID\nWHERE c.Customer_Details = 'Hardy Kutch' OR ci.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Which services are used by the customer \"Hardy Kutch\" or are rated as \"good\" in a customer interaction? Give me the service details.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

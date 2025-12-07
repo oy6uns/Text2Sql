@@ -1,0 +1,1 @@
+SELECT process_status_code, process_status_description FROM Process_Status;

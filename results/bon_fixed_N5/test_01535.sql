@@ -1,0 +1,1 @@
+SELECT Id FROM goods WHERE Id LIKE '%APP%'

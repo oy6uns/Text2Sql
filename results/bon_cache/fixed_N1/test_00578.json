@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Title\nFROM Book\nWHERE Title IN (\n    SELECT b.Title\n    FROM Book b\n    JOIN Author_Book ab ON b.ISBN = ab.ISBN\n    JOIN Author a ON ab.Author = a.idAuthor\n    WHERE a.Name = 'Plato'\n)\nAND SalePrice < (SELECT AVG(SalePrice) FROM Book)",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Give the titles of books authored by Plato that have a sale price lower than the average sale price across all books.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

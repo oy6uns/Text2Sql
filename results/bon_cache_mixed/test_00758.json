@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nWHERE p.id IN (\n    SELECT ps1.participant_id\n    FROM performance_score ps1\n    JOIN songs s1 ON ps1.songs_id = s1.id\n    WHERE s1.language = 'Croatian'\n)\nAND p.id IN (\n    SELECT ps2.participant_id\n    FROM performance_score ps2\n    JOIN songs s2 ON ps2.songs_id = s2.id\n    WHERE s2.language = 'English'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps_cro ON p.id = ps_cro.participant_id\nJOIN songs s_cro ON ps_cro.songs_id = s_cro.id\nJOIN performance_score ps_eng ON p.id = ps_eng.participant_id\nJOIN songs s_eng ON ps_eng.songs_id = s_eng.id\nWHERE s_cro.language = 'Croatian' AND s_eng.language = 'English'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps ON p.id = ps.participant_id\nJOIN songs s ON ps.songs_id = s.id\nWHERE s.language IN ('Croatian', 'English')\nGROUP BY p.id, p.name, p.popularity\nHAVING COUNT(DISTINCT s.language) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps ON p.id = ps.participant_id\nJOIN songs s ON ps.songs_id = s.id\nWHERE s.language IN ('Croatian', 'English')\nGROUP BY p.id, p.name, p.popularity\nHAVING COUNT(DISTINCT s.language) = 2;",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps ON p.id = ps.participant_id\nJOIN songs s ON ps.songs_id = s.id\nWHERE s.language IN ('Croatian', 'English')\nGROUP BY p.id, p.name, p.popularity\nHAVING COUNT(DISTINCT s.language) = 2",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

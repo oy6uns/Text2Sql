@@ -1,0 +1,173 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c2.city_name\nFROM City c1\nJOIN Direct_distance d ON c1.city_code = d.city1_code\nJOIN City c2 ON d.city2_code = c2.city_code\nWHERE c1.city_name = 'Boston'\nORDER BY d.distance DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What is the name of the city furthest to Boston?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT c.city_name\nFROM Direct_distance d\nJOIN City c ON d.city2_code = c.city_code\nWHERE d.city1_code = (SELECT city_code FROM City WHERE city_name = 'Boston')\nORDER BY d.distance DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What is the name of the city furthest to Boston?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT c2.city_name\nFROM City c1\nJOIN Direct_distance d ON c1.city_code = d.city1_code\nJOIN City c2 ON d.city2_code = c2.city_code\nWHERE c1.city_name = 'Boston'\nORDER BY d.distance DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What is the name of the city furthest to Boston?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT c.city_name\nFROM City c\nJOIN City b ON b.city_name = 'Boston'\nORDER BY ((c.latitude - b.latitude)*(c.latitude - b.latitude) + (c.longitude - b.longitude)*(c.longitude - b.longitude)) DESC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What is the name of the city furthest to Boston?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "WITH boston_code AS (\n  SELECT city_code FROM City WHERE city_name = 'Boston'\n),\ndistances AS (\n  SELECT city2_code AS city_code, distance FROM Direct_distance WHERE city1_code = (SELECT city_code FROM boston_code)\n  UNION ALL\n  SELECT city1_code AS city_code, distance FROM Direct_distance WHERE city2_code = (SELECT city_code FROM boston_code)\n),\nmax_distance AS (\n  SELECT MAX(distance) AS max_dist FROM distances\n)\nSELECT city_name \nFROM City \nWHERE city_code IN (\n  SELECT city_code FROM distances WHERE distance = (SELECT max_dist FROM max_distance)\n);",
+    "score": 2.25,
+    "syntax_score": 2.5,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "What is the name of the city furthest to Boston?",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "BOSTON_CODE",
+        "BOSTON_CODE",
+        "DISTANCES",
+        "DISTANCES",
+        "MAX_DISTANCE"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

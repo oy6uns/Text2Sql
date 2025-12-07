@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT rac.age_category_code, rac.age_category_description\nFROM Users u\nJOIN Ref_User_Categories ruc ON u.user_category_code = ruc.user_category_code\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE ruc.user_category_description LIKE '%Mother%'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the age categories for users whose description contains the string Mother?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT rac.age_category_code, rac.age_category_description\nFROM Users u\nJOIN Ref_User_Categories ruc ON u.user_category_code = ruc.user_category_code\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE ruc.user_category_description LIKE '%Mother%'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the age categories for users whose description contains the string Mother?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT rac.age_category_code, rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.other_user_details ILIKE '%Mother%' OR u.first_name ILIKE '%Mother%' OR u.middle_name ILIKE '%Mother%' OR u.last_name ILIKE '%Mother%' OR u.login_name ILIKE '%Mother%' OR u.user_category_code IN (\n    SELECT user_category_code FROM Ref_User_Categories WHERE user_category_description ILIKE '%Mother%'\n)",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "What are the age categories for users whose description contains the string Mother?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ILIKE\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT rac.age_category_code, rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.other_user_details ILIKE '%Mother%' OR u.first_name ILIKE '%Mother%' OR u.middle_name ILIKE '%Mother%' OR u.last_name ILIKE '%Mother%'",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "What are the age categories for users whose description contains the string Mother?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ILIKE\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT rac.age_category_code, rac.age_category_description\nFROM Users u\nJOIN Ref_Age_Categories rac ON u.age_category_code = rac.age_category_code\nWHERE u.other_user_details ILIKE '%Mother%' OR u.first_name ILIKE '%Mother%' OR u.middle_name ILIKE '%Mother%' OR u.last_name ILIKE '%Mother%' OR u.login_name ILIKE '%Mother%' OR u.password ILIKE '%Mother%' OR u.user_category_code ILIKE '%Mother%' OR u.is_buyer ILIKE '%Mother%' OR u.is_seller ILIKE '%Mother%' OR u.other_user_details ILIKE '%Mother%'",
+    "score": -95.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "What are the age categories for users whose description contains the string Mother?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ILIKE\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

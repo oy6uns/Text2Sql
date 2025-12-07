@@ -1,0 +1,43 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH ResultCounts AS (\n    SELECT behaviour_monitoring_details, COUNT(DISTINCT student_id) AS cnt\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n),\nMostCommonResults AS (\n    SELECT behaviour_monitoring_details\n    FROM ResultCounts\n    WHERE cnt = (SELECT MAX(cnt) FROM ResultCounts)\n),\nResultsWithThreeStudents AS (\n    SELECT behaviour_monitoring_details\n    FROM ResultCounts\n    WHERE cnt = 3\n),\nStudentsWithMostCommon AS (\n    SELECT DISTINCT student_id\n    FROM Behaviour_Monitoring\n    WHERE behaviour_monitoring_details IN (SELECT behaviour_monitoring_details FROM MostCommonResults)\n),\nStudentsWithThreeStudentsResult AS (\n    SELECT DISTINCT student_id\n    FROM Behaviour_Monitoring\n    WHERE behaviour_monitoring_details IN (SELECT behaviour_monitoring_details FROM ResultsWithThreeStudents)\n)\nSELECT s.bio_data, s.student_details\nFROM Students s\nWHERE s.student_id IN (SELECT student_id FROM StudentsWithMostCommon)\n  AND s.student_id IN (SELECT student_id FROM StudentsWithThreeStudentsResult)",
+    "score": 1.75,
+    "syntax_score": 2.5,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Which students not only got the most common result but also got a result obtained by 3 students in behaviour monitoring? List the student's biographical data and details.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "RESULTCOUNTS",
+        "RESULTCOUNTS",
+        "RESULTCOUNTS",
+        "MOSTCOMMONRESULTS",
+        "RESULTSWITHTHREESTUDENTS",
+        "STUDENTSWITHMOSTCOMMON",
+        "STUDENTSWITHTHREESTUDENTSRESULT"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

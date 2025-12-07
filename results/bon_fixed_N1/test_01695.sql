@@ -1,0 +1,5 @@
+SELECT Contents
+FROM Boxes
+GROUP BY Contents
+ORDER BY SUM(Value) DESC
+LIMIT 1;

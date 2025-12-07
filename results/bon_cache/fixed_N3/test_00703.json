@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n    d.Document_Object_ID, \n    COUNT(r.Related_Document_Object_ID) AS Number_of_Related_Documents\nFROM \n    Document_Objects d\nLEFT JOIN \n    Document_Subset_Members r ON d.Document_Object_ID = r.Document_Object_ID\nGROUP BY \n    d.Document_Object_ID\nORDER BY \n    Number_of_Related_Documents ASC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Which document has least number of related documents? List the document id and the number of related documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT \n    d.Document_Object_ID,\n    COALESCE(COUNT(r.Related_Document_Object_ID), 0) AS number_of_related_documents\nFROM \n    Document_Objects d\nLEFT JOIN \n    Document_Subset_Members r ON d.Document_Object_ID = r.Document_Object_ID\nGROUP BY \n    d.Document_Object_ID\nORDER BY \n    number_of_related_documents ASC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Which document has least number of related documents? List the document id and the number of related documents.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Document_Object_ID, COALESCE(related_count, 0) AS number_of_related_documents\nFROM Document_Objects\nLEFT JOIN (\n    SELECT Document_Object_ID, COUNT(Related_Document_Object_ID) AS related_count\n    FROM Document_Subset_Members\n    GROUP BY Document_Object_ID\n) AS related_docs ON Document_Objects.Document_Object_ID = related_docs.Document_Object_ID\nORDER BY number_of_related_documents ASC\nLIMIT 1;",
+    "score": -95.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": -100.0,
+    "question": "Which document has least number of related documents? List the document id and the number of related documents.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "ambiguous column name: Document_Object_ID",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

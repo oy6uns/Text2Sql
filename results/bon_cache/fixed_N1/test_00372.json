@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT c.Customer_Details\nFROM Customers c\nJOIN Customers_and_Services cs ON c.Customer_ID = cs.Customer_ID\nWHERE cs.Service_ID = (\n    SELECT Service_ID\n    FROM (\n        SELECT Service_ID, COUNT(DISTINCT Customer_ID) AS usage_count\n        FROM Customers_and_Services\n        GROUP BY Service_ID\n        ORDER BY usage_count ASC\n        LIMIT 1\n    ) sub\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "Which customers used the least commonly-used service ? Give me the distinct customer details .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

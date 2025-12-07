@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT u.University_Name, o.Citation_point\nFROM overall_ranking o\nJOIN university u ON o.University_ID = u.University_ID\nWHERE o.Reputation_point IN (\n    SELECT DISTINCT Reputation_point\n    FROM overall_ranking\n    ORDER BY Reputation_point DESC\n    LIMIT 3\n)\nORDER BY o.Reputation_point DESC;",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name and Citation point of the universities whose reputation points are top 3 and above.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT u.University_Name, o.Citation_point\nFROM overall_ranking o\nJOIN university u ON o.University_ID = u.University_ID\nWHERE o.Reputation_point >= (\n    SELECT MIN(Reputation_point)\n    FROM (\n        SELECT Reputation_point\n        FROM overall_ranking\n        ORDER BY Reputation_point DESC\n        LIMIT 3\n    ) AS top3\n)",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the name and Citation point of the universities whose reputation points are top 3 and above.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT u.University_Name, o.Citation_point\nFROM overall_ranking o\nJOIN university u ON o.University_ID = u.University_ID\nWHERE o.Reputation_point >= (\n    SELECT MIN(Reputation_point) \n    FROM (\n        SELECT DISTINCT Reputation_point\n        FROM overall_ranking\n        ORDER BY Reputation_point DESC\n        LIMIT 3\n    ) AS top3\n)",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the name and Citation point of the universities whose reputation points are top 3 and above.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT u.University_Name, o.Citation_point\nFROM overall_ranking o\nJOIN university u ON o.University_ID = u.University_ID\nWHERE o.Reputation_point >= (\n    SELECT MIN(Reputation_point)\n    FROM (\n        SELECT DISTINCT Reputation_point\n        FROM overall_ranking\n        ORDER BY Reputation_point DESC\n        LIMIT 3\n    ) AS top3\n)",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the name and Citation point of the universities whose reputation points are top 3 and above.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT u.University_Name, o.Citation_point\nFROM overall_ranking o\nJOIN university u ON o.University_ID = u.University_ID\nWHERE o.Reputation_point >= (\n    SELECT MIN(Reputation_point) \n    FROM (\n        SELECT DISTINCT Reputation_point \n        FROM overall_ranking \n        ORDER BY Reputation_point DESC \n        LIMIT 3\n    ) AS top3\n)",
+    "score": 4.25,
+    "syntax_score": 2.5,
+    "schema_score": 0.75,
+    "execution_score": 1.0,
+    "question": "Find the name and Citation point of the universities whose reputation points are top 3 and above.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 12,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

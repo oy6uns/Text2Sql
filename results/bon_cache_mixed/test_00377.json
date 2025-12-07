@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT s.Service_Details\nFROM Services s\nJOIN Customers_and_Services cs ON s.Service_ID = cs.Service_ID\nJOIN Customers c ON cs.Customer_ID = c.Customer_ID\nLEFT JOIN Customer_Interactions ci ON s.Service_ID = ci.Service_ID\nWHERE c.Customer_Details = 'Hardy Kutch'\n   OR ci.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of all the services which either have been used by customer \"Hardy Kutch\" or have been rated as \"good\" in one of the customer interactions.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT s.Service_Details\nFROM Services s\nWHERE s.Service_ID IN (\n    SELECT cas.Service_ID\n    FROM Customers_and_Services cas\n    JOIN Customers c ON cas.Customer_ID = c.Customer_ID\n    WHERE c.Customer_Details = 'Hardy Kutch'\n    UNION\n    SELECT ci.Service_ID\n    FROM Customer_Interactions ci\n    WHERE ci.Status_Code = 'good'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of all the services which either have been used by customer \"Hardy Kutch\" or have been rated as \"good\" in one of the customer interactions.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT S.Service_Details\nFROM Services S\nLEFT JOIN Customers_and_Services CAS ON S.Service_ID = CAS.Service_ID\nLEFT JOIN Customers C ON CAS.Customer_ID = C.Customer_ID\nLEFT JOIN Customer_Interactions CI ON S.Service_ID = CI.Service_ID\nWHERE C.Customer_Details = 'Hardy Kutch'\n   OR CI.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of all the services which either have been used by customer \"Hardy Kutch\" or have been rated as \"good\" in one of the customer interactions.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT S.Service_Details\nFROM Services S\nLEFT JOIN Customers_and_Services CAS ON S.Service_ID = CAS.Service_ID\nLEFT JOIN Customers C ON CAS.Customer_ID = C.Customer_ID\nLEFT JOIN Customer_Interactions CI ON S.Service_ID = CI.Service_ID\nWHERE C.Customer_Details = 'Hardy Kutch' OR CI.Status_Code = 'good'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of all the services which either have been used by customer \"Hardy Kutch\" or have been rated as \"good\" in one of the customer interactions.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT Service_Details\nFROM Services\nWHERE Service_ID IN (\n    SELECT Service_ID\n    FROM Customers_and_Services\n    WHERE Customer_ID = (SELECT Customer_ID FROM Customers WHERE Customer_Details = 'Hardy Kutch')\n    UNION\n    SELECT Service_ID\n    FROM Customer_Interactions\n    WHERE Status_Code = 'good'\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Find the name of all the services which either have been used by customer \"Hardy Kutch\" or have been rated as \"good\" in one of the customer interactions.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

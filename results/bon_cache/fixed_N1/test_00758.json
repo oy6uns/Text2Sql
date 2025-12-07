@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps1 ON p.id = ps1.participant_id\nJOIN songs s1 ON ps1.songs_id = s1.id AND s1.language = 'Croatian'\nJOIN performance_score ps2 ON p.id = ps2.participant_id\nJOIN songs s2 ON ps2.songs_id = s2.id AND s2.language = 'English'\nGROUP BY p.id, p.name, p.popularity;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

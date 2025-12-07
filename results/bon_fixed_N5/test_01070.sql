@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM institution WHERE Founded BETWEEN 1850 AND 1900;

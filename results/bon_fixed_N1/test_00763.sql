@@ -1,0 +1,1 @@
+SELECT DISTINCT state FROM City WHERE state IS NOT NULL;

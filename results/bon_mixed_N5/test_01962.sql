@@ -1,0 +1,5 @@
+SELECT Franchise
+FROM game
+GROUP BY Franchise
+ORDER BY COUNT(Game_ID) DESC
+LIMIT 1;

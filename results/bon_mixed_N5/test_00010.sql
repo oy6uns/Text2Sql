@@ -1,0 +1,4 @@
+SELECT Name
+FROM player
+ORDER BY Earnings DESC
+LIMIT 1;

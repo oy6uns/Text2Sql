@@ -1,0 +1,1 @@
+SELECT Model FROM headphone ORDER BY Price DESC LIMIT 1;

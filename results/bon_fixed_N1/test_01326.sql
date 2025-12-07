@@ -1,0 +1,3 @@
+SELECT COUNT(DISTINCT Engine) 
+FROM driver 
+WHERE Age > 30 OR Age < 20;

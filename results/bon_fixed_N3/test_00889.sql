@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM Sailors WHERE name LIKE 'D%';

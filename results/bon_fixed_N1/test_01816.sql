@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Code) FROM Movies WHERE Code IN (SELECT Movie FROM MovieTheaters);

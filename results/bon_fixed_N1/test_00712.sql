@@ -1,0 +1,7 @@
+SELECT 
+  ds.Document_Subset_ID, 
+  ds.Document_Subset_Name, 
+  COUNT(DISTINCT dsm.Document_Object_ID) AS Number_of_Different_Documents
+FROM Document_Subsets ds
+LEFT JOIN Document_Subset_Members dsm ON ds.Document_Subset_ID = dsm.Document_Subset_ID
+GROUP BY ds.Document_Subset_ID, ds.Document_Subset_Name;

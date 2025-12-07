@@ -1,0 +1,1 @@
+SELECT datetime_detention_start, datetime_detention_end FROM Detention;

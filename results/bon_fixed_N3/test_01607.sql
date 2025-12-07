@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM driver WHERE TRY_TO_NUMBER(Points) < 150;

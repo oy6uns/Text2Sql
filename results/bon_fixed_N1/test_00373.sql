@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Customers_and_Services_Details) FROM Customers_and_Services;

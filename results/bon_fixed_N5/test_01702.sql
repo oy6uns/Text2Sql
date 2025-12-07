@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Contents) FROM Boxes;

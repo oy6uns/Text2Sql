@@ -1,0 +1,1 @@
+SELECT staff_role_code, staff_role_description FROM Ref_Staff_Roles;

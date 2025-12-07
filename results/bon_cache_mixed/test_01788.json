@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT u.University_Name\nFROM university u\nJOIN major_ranking mr1 ON u.University_ID = mr1.University_ID\nJOIN major m1 ON mr1.Major_ID = m1.Major_ID AND m1.Major_Name = 'Accounting'\nJOIN major_ranking mr2 ON u.University_ID = mr2.University_ID\nJOIN major m2 ON mr2.Major_ID = m2.Major_ID AND m2.Major_Name = 'Urban Education'\nGROUP BY u.University_Name;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of all universities that have both Accounting and Urban Education majors?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT u.University_Name\nFROM university u\nJOIN major_ranking mr1 ON u.University_ID = mr1.University_ID\nJOIN major_ranking mr2 ON u.University_ID = mr2.University_ID\nJOIN major m1 ON mr1.Major_ID = m1.Major_ID\nJOIN major m2 ON mr2.Major_ID = m2.Major_ID\nWHERE m1.Major_Name = 'Accounting' AND m2.Major_Name = 'Urban Education'",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of all universities that have both Accounting and Urban Education majors?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT u.University_Name\nFROM university u\nJOIN major_ranking mr1 ON u.University_ID = mr1.University_ID\nJOIN major_ranking mr2 ON u.University_ID = mr2.University_ID\nJOIN major m1 ON mr1.Major_ID = m1.Major_ID\nJOIN major m2 ON mr2.Major_ID = m2.Major_ID\nWHERE m1.Major_Name = 'Accounting' AND m2.Major_Name = 'Urban Education';",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of all universities that have both Accounting and Urban Education majors?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT u.University_Name\nFROM university u\nJOIN major_ranking mr1 ON u.University_ID = mr1.University_ID\nJOIN major m1 ON mr1.Major_ID = m1.Major_ID\nJOIN major_ranking mr2 ON u.University_ID = mr2.University_ID\nJOIN major m2 ON mr2.Major_ID = m2.Major_ID\nWHERE m1.Major_Name = 'Accounting'\n  AND m2.Major_Name = 'Urban Education'\nGROUP BY u.University_Name;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of all universities that have both Accounting and Urban Education majors?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT u.University_Name\nFROM university u\nJOIN major_ranking mr1 ON u.University_ID = mr1.University_ID\nJOIN major m1 ON mr1.Major_ID = m1.Major_ID AND m1.Major_Name = 'Accounting'\nJOIN major_ranking mr2 ON u.University_ID = mr2.University_ID\nJOIN major m2 ON mr2.Major_ID = m2.Major_ID AND m2.Major_Name = 'Urban Education'\nGROUP BY u.University_Name;",
+    "score": 3.5,
+    "syntax_score": 3.0,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "What are the names of all universities that have both Accounting and Urban Education majors?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "rank": 1,
+    "sql": "WITH attendance_count AS (\n  SELECT \n    Conference_ID, \n    COUNT(DISTINCT staff_ID) AS attendants\n  FROM conference_participation\n  GROUP BY Conference_ID\n),\nranked_conferences AS (\n  SELECT \n    Conference_ID, \n    attendants,\n    DENSE_RANK() OVER (ORDER BY attendants DESC) AS rnk\n  FROM attendance_count\n)\nSELECT c.Conference_Name\nFROM conference c\nJOIN ranked_conferences rc ON c.Conference_ID = rc.Conference_ID\nWHERE rc.rnk <= 2;",
+    "score": 2.75,
+    "syntax_score": 3.0,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Find the name of the conferences that have the top 2 most number of attendants.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "ATTENDANCE_COUNT",
+        "RANKED_CONFERENCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "WITH attendance_counts AS (\n  SELECT Conference_ID, COUNT(DISTINCT staff_ID) AS attendant_count\n  FROM conference_participation\n  GROUP BY Conference_ID\n), ranked_conferences AS (\n  SELECT Conference_ID, attendant_count,\n         DENSE_RANK() OVER (ORDER BY attendant_count DESC) AS rank\n  FROM attendance_counts\n)\nSELECT c.Conference_Name\nFROM ranked_conferences rc\nJOIN conference c ON rc.Conference_ID = c.Conference_ID\nWHERE rc.rank <= 2;",
+    "score": 2.75,
+    "syntax_score": 3.0,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Find the name of the conferences that have the top 2 most number of attendants.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "ATTENDANCE_COUNTS",
+        "RANKED_CONFERENCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "WITH attendance_counts AS (\n  SELECT \n    Conference_ID, \n    COUNT(DISTINCT staff_ID) AS attendants_count\n  FROM conference_participation\n  GROUP BY Conference_ID\n),\nranked_conferences AS (\n  SELECT \n    Conference_ID,\n    attendants_count,\n    DENSE_RANK() OVER (ORDER BY attendants_count DESC) AS rank\n  FROM attendance_counts\n)\nSELECT c.Conference_Name\nFROM conference c\nJOIN ranked_conferences rc ON c.Conference_ID = rc.Conference_ID\nWHERE rc.rank <= 2;",
+    "score": 2.75,
+    "syntax_score": 3.0,
+    "schema_score": -1.25,
+    "execution_score": 1.0,
+    "question": "Find the name of the conferences that have the top 2 most number of attendants.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.25,
+      "unknown_tables": [
+        "ATTENDANCE_COUNTS",
+        "RANKED_CONFERENCES"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "WITH attendance_counts AS (\n  SELECT \n    Conference_ID, \n    COUNT(DISTINCT staff_ID) AS attendant_count\n  FROM conference_participation\n  GROUP BY Conference_ID\n),\ntop2_counts AS (\n  SELECT DISTINCT attendant_count\n  FROM attendance_counts\n  ORDER BY attendant_count DESC\n  LIMIT 2\n)\nSELECT c.Conference_Name\nFROM conference c\nJOIN attendance_counts ac ON c.Conference_ID = ac.Conference_ID\nWHERE ac.attendant_count IN (SELECT attendant_count FROM top2_counts)\nORDER BY ac.attendant_count DESC, c.Conference_Name;",
+    "score": 2.25,
+    "syntax_score": 3.0,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of the conferences that have the top 2 most number of attendants.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "ATTENDANCE_COUNTS",
+        "ATTENDANCE_COUNTS",
+        "TOP2_COUNTS"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "WITH attendance_counts AS (\n  SELECT \n    Conference_ID, \n    COUNT(staff_ID) AS attendants_count\n  FROM conference_participation\n  GROUP BY Conference_ID\n),\ntop2 AS (\n  SELECT DISTINCT attendants_count\n  FROM attendance_counts\n  ORDER BY attendants_count DESC\n  LIMIT 2\n)\nSELECT c.Conference_Name\nFROM conference c\nJOIN attendance_counts ac ON c.Conference_ID = ac.Conference_ID\nWHERE ac.attendants_count IN (SELECT attendants_count FROM top2)\nORDER BY ac.attendants_count DESC, c.Conference_Name;",
+    "score": 2.25,
+    "syntax_score": 3.0,
+    "schema_score": -1.75,
+    "execution_score": 1.0,
+    "question": "Find the name of the conferences that have the top 2 most number of attendants.",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": -1.75,
+      "unknown_tables": [
+        "ATTENDANCE_COUNTS",
+        "ATTENDANCE_COUNTS",
+        "TOP2"
+      ],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

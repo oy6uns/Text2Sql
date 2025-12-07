@@ -1,0 +1,6 @@
+SELECT Title
+FROM Book
+WHERE ISBN NOT IN (
+    SELECT DISTINCT ISBN
+    FROM Books_Order
+)

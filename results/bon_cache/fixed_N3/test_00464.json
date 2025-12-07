@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT s.bio_data\nFROM Students s\nJOIN Behaviour_Monitoring b ON s.student_id = b.student_id\nWHERE b.behaviour_monitoring_details = (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "What is the biographical information of the students who got the most common result for their behaviour monitoring details ?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 6,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT bio_data\nFROM Students\nWHERE student_id IN (\n    SELECT student_id\n    FROM Behaviour_Monitoring\n    WHERE behaviour_monitoring_details = (\n        SELECT behaviour_monitoring_details\n        FROM Behaviour_Monitoring\n        GROUP BY behaviour_monitoring_details\n        ORDER BY COUNT(*) DESC\n        LIMIT 1\n    )\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "What is the biographical information of the students who got the most common result for their behaviour monitoring details ?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT s.bio_data\nFROM Students s\nJOIN Behaviour_Monitoring b ON s.student_id = b.student_id\nWHERE b.behaviour_monitoring_details = (\n    SELECT behaviour_monitoring_details\n    FROM Behaviour_Monitoring\n    GROUP BY behaviour_monitoring_details\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)",
+    "score": 4.25,
+    "syntax_score": 3.0,
+    "schema_score": 0.25,
+    "execution_score": 1.0,
+    "question": "What is the biographical information of the students who got the most common result for their behaviour monitoring details ?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 0.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": true,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 6,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

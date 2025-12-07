@@ -1,0 +1,5 @@
+SELECT Name
+FROM MovieTheaters
+GROUP BY Name
+ORDER BY COUNT(Movie) DESC
+LIMIT 1;

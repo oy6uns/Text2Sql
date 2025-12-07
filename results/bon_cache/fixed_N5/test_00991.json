@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Affiliation.name, COUNT(DISTINCT Author_list.paper_id) AS paper_count\nFROM Affiliation\nLEFT JOIN Author_list ON Affiliation.affiliation_id = Author_list.affiliation_id\nGROUP BY Affiliation.name\nORDER BY paper_count ASC;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "List all affiliations with ascending ordered number of papers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2310,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT Affiliation.name, COUNT(DISTINCT Author_list.paper_id) AS paper_count\nFROM Affiliation\nLEFT JOIN Author_list ON Affiliation.affiliation_id = Author_list.affiliation_id\nGROUP BY Affiliation.name\nORDER BY paper_count ASC;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "List all affiliations with ascending ordered number of papers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2310,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Affiliation a\nLEFT JOIN Author_list al ON a.affiliation_id = al.affiliation_id\nGROUP BY a.name\nORDER BY paper_count ASC;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "List all affiliations with ascending ordered number of papers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2310,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Affiliation a\nLEFT JOIN Author_list al ON a.affiliation_id = al.affiliation_id\nGROUP BY a.name\nORDER BY paper_count ASC;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "List all affiliations with ascending ordered number of papers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2310,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT a.name, COUNT(DISTINCT al.paper_id) AS paper_count\nFROM Affiliation a\nLEFT JOIN Author_list al ON a.affiliation_id = al.affiliation_id\nGROUP BY a.name\nORDER BY paper_count ASC;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 0.5,
+    "question": "List all affiliations with ascending ordered number of papers.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 0.5,
+      "error": null,
+      "timed_out": false,
+      "row_count": 2310,
+      "too_many_rows": true,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

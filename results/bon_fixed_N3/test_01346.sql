@@ -1,0 +1,4 @@
+SELECT Engine
+FROM driver
+GROUP BY Engine
+HAVING COUNT(DISTINCT Driver_ID) >= 2;

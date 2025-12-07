@@ -1,0 +1,7 @@
+SELECT DISTINCT Constructor
+FROM driver
+WHERE Age < 20
+INTERSECT
+SELECT DISTINCT Constructor
+FROM driver
+WHERE Age > 30;

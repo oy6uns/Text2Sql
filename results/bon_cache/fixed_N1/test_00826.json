@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT AVG(distance) AS average_distance\nFROM Direct_distance\nWHERE (city1_code = (SELECT city_code FROM City WHERE city_name = 'Boston') AND city2_code <> (SELECT city_code FROM City WHERE city_name = 'Boston'))\n   OR (city2_code = (SELECT city_code FROM City WHERE city_name = 'Boston') AND city1_code <> (SELECT city_code FROM City WHERE city_name = 'Boston'));",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Give the average distance between Boston and other cities.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

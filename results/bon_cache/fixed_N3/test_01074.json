@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT \n    i.Institution_ID, \n    COUNT(s.staff_ID) AS staff_count, \n    STRING_AGG(s.name, ', ') AS staff_names\nFROM \n    institution i\nJOIN \n    staff s ON i.Institution_ID = s.Institution_ID\nWHERE \n    i.Founded > 1800\nGROUP BY \n    i.Institution_ID;",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "For each institution id , how many staff members does each institution have that was founded after 1800 ? return their names .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 7,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT institution.Institution_ID, COUNT(staff.staff_ID) AS staff_count, LISTAGG(staff.name, ', ') AS staff_names\nFROM institution\nJOIN staff ON institution.Institution_ID = staff.Institution_ID\nWHERE institution.Founded > 1800\nGROUP BY institution.Institution_ID;",
+    "score": -96.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "For each institution id , how many staff members does each institution have that was founded after 1800 ? return their names .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "no such function: LISTAGG",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT \n  i.Institution_ID, \n  COUNT(s.staff_ID) AS staff_count, \n  LISTAGG(s.name, ', ') WITHIN GROUP (ORDER BY s.name) AS staff_names\nFROM institution i\nJOIN staff s ON i.Institution_ID = s.Institution_ID\nWHERE i.Founded > 1800\nGROUP BY i.Institution_ID;",
+    "score": -96.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": -100.0,
+    "question": "For each institution id , how many staff members does each institution have that was founded after 1800 ? return their names .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"(\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

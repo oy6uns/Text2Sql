@@ -1,0 +1,5 @@
+SELECT DISTINCT p.product_name, s.shipment_date
+FROM Products p
+JOIN Order_Items oi ON p.product_id = oi.product_id
+JOIN Shipment_Items si ON oi.order_item_id = si.order_item_id
+JOIN Shipments s ON si.shipment_id = s.shipment_id;

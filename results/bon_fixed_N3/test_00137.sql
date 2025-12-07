@@ -1,0 +1,3 @@
+SELECT Transmitter
+FROM radio
+ORDER BY TRY_TO_NUMBER(ERP_kW) ASC;

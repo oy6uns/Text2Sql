@@ -1,0 +1,1 @@
+SELECT Name FROM store WHERE Store_ID NOT IN (SELECT DISTINCT Store_ID FROM stock WHERE Quantity > 0)

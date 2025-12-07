@@ -1,0 +1,3 @@
+SELECT Transmitter
+FROM radio
+ORDER BY CAST(ERP_kW AS FLOAT) ASC;

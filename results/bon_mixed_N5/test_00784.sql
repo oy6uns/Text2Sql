@@ -1,0 +1,5 @@
+SELECT state
+FROM City
+GROUP BY state
+ORDER BY COUNT(city_code) DESC
+LIMIT 1;

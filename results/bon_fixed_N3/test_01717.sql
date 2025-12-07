@@ -1,0 +1,6 @@
+SELECT DISTINCT w.Location
+FROM Warehouses w
+JOIN Boxes b ON w.Code = b.Warehouse
+WHERE b.Contents IN ('Rocks', 'Scissors')
+GROUP BY w.Code, w.Location
+HAVING COUNT(DISTINCT b.Contents) = 2;

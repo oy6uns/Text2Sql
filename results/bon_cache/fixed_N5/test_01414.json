@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT AVG(CAST(room_count AS FLOAT)) AS average_room_count\nFROM Properties p\nJOIN Property_Features pf ON p.property_id = pf.property_id\nJOIN Features f ON pf.feature_id = f.feature_id\nWHERE LOWER(f.feature_name) = 'garden';",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List the average room count of the properties with gardens.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT AVG(CAST(room_count AS FLOAT)) AS average_room_count\nFROM Properties p\nJOIN Property_Features pf ON p.property_id = pf.property_id\nJOIN Features f ON pf.feature_id = f.feature_id\nWHERE LOWER(f.feature_name) = 'garden';",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List the average room count of the properties with gardens.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT AVG(CAST(room_count AS FLOAT)) AS average_room_count\nFROM Properties p\nJOIN Property_Features pf ON p.property_id = pf.property_id\nJOIN Features f ON pf.feature_id = f.feature_id\nWHERE LOWER(f.feature_name) = 'garden';",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List the average room count of the properties with gardens.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT AVG(CAST(room_count AS FLOAT)) AS average_room_count\nFROM Properties p\nJOIN Property_Features pf ON p.property_id = pf.property_id\nJOIN Features f ON pf.feature_id = f.feature_id\nWHERE LOWER(f.feature_name) = 'garden' AND (pf.feature_value IS NULL OR LOWER(pf.feature_value) IN ('yes', 'true', '1'))",
+    "score": 3.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": 0.0,
+    "question": "List the average room count of the properties with gardens.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 0.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT AVG(CAST(Properties.room_count AS FLOAT)) AS average_room_count\nFROM Properties\nJOIN Property_Features ON Properties.property_id = Property_Features.property_id\nJOIN Features ON Property_Features.feature_id = Features.feature_id\nWHERE Features.feature_name ILIKE '%garden%' AND (Property_Features.feature_value IS NULL OR Property_Features.feature_value ILIKE 'yes' OR Property_Features.feature_value ILIKE 'true')",
+    "score": -97.0,
+    "syntax_score": 2.5,
+    "schema_score": 0.5,
+    "execution_score": -100.0,
+    "question": "List the average room count of the properties with gardens.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 0.5,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": -100.0,
+      "error": "near \"ILIKE\": syntax error",
+      "timed_out": false,
+      "row_count": 0,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": false
+    }
+  }
+]

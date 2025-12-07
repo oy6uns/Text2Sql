@@ -1,0 +1,35 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT Vehicle.Vehicle_ID, Vehicle.Model\nFROM Vehicle\nLEFT JOIN vehicle_driver ON Vehicle.Vehicle_ID = vehicle_driver.Vehicle_ID\nGROUP BY Vehicle.Vehicle_ID, Vehicle.Model, Vehicle.Builder\nHAVING COUNT(DISTINCT vehicle_driver.Driver_ID) = 2 OR Vehicle.Builder = 'Ziyang'",
+    "score": 4.75,
+    "syntax_score": 2.5,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Return the ids and models of vehicles that have been driven by exactly two drivers or built by Ziyang.",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": true
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": true
+    }
+  }
+]

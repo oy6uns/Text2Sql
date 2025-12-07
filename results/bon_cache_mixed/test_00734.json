@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT DISTINCT do.Document_Object_ID\nFROM Document_Objects do\nLEFT JOIN Document_Subset_Members dsm ON do.Document_Object_ID = dsm.Document_Object_ID\nLEFT JOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nLEFT JOIN Documents_in_Collections dic ON do.Document_Object_ID = dic.Document_Object_ID\nLEFT JOIN Collections c ON dic.Collection_ID = c.Collection_ID\nWHERE ds.Document_Subset_Name = 'Best for 2000' OR c.Collection_Name = 'Best'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the different document ids that are in the subset named 'Best for 2000' or in the collection named 'Best'?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT DISTINCT do.Document_Object_ID\nFROM Document_Objects do\nLEFT JOIN Document_Subset_Members dsm ON do.Document_Object_ID = dsm.Related_Document_Object_ID\nLEFT JOIN Document_Subsets ds ON dsm.Document_Subset_ID = ds.Document_Subset_ID\nLEFT JOIN Documents_in_Collections dic ON do.Document_Object_ID = dic.Document_Object_ID\nLEFT JOIN Collections c ON dic.Collection_ID = c.Collection_ID\nWHERE ds.Document_Subset_Name = 'Best for 2000'\n   OR c.Collection_Name = 'Best'",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the different document ids that are in the subset named 'Best for 2000' or in the collection named 'Best'?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Document_Object_ID\nFROM Document_Subset_Members\nJOIN Document_Subsets ON Document_Subset_Members.Document_Subset_ID = Document_Subsets.Document_Subset_ID\nWHERE Document_Subsets.Document_Subset_Name = 'Best for 2000'\nUNION\nSELECT Document_Object_ID\nFROM Documents_in_Collections\nJOIN Collections ON Documents_in_Collections.Collection_ID = Collections.Collection_ID\nWHERE Collections.Collection_Name = 'Best'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different document ids that are in the subset named 'Best for 2000' or in the collection named 'Best'?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT DISTINCT Document_Object_ID FROM (\n    SELECT Document_Object_ID\n    FROM Document_Subset_Members\n    WHERE Document_Subset_ID = (\n        SELECT Document_Subset_ID \n        FROM Document_Subsets \n        WHERE Document_Subset_Name = 'Best for 2000'\n    )\n    UNION\n    SELECT Document_Object_ID\n    FROM Documents_in_Collections\n    WHERE Collection_ID IN (\n        SELECT Collection_ID \n        FROM Collections \n        WHERE Collection_Name = 'Best'\n    )\n) AS combined_documents;",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different document ids that are in the subset named 'Best for 2000' or in the collection named 'Best'?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT DISTINCT dsm.Related_Document_Object_ID AS Document_Object_ID\nFROM Document_Subsets ds\nJOIN Document_Subset_Members dsm ON ds.Document_Subset_ID = dsm.Document_Subset_ID\nWHERE ds.Document_Subset_Name = 'Best for 2000'\n\nUNION\n\nSELECT DISTINCT dic.Document_Object_ID\nFROM Collections c\nJOIN Documents_in_Collections dic ON c.Collection_ID = dic.Collection_ID\nWHERE c.Collection_Name = 'Best'",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "What are the different document ids that are in the subset named 'Best for 2000' or in the collection named 'Best'?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

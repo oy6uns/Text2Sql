@@ -1,0 +1,167 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT c.Name, COALESCE(pkg_count.PackageCount, 0) AS NumberOfPackagesReceived\nFROM Client c\nLEFT JOIN (\n    SELECT Recipient, COUNT(*) AS PackageCount\n    FROM Package\n    GROUP BY Recipient\n) pkg_count ON c.AccountNumber = pkg_count.Recipient\nWHERE COALESCE(pkg_count.PackageCount, 0) = (\n    SELECT MIN(COALESCE(pcount.PackageCount, 0)) FROM (\n        SELECT Recipient, COUNT(*) AS PackageCount\n        FROM Package\n        GROUP BY Recipient\n    ) pcount\n    RIGHT JOIN Client cl ON pcount.Recipient = cl.AccountNumber\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT c.Name, COALESCE(pkg_count.ReceivedPackages, 0) AS NumberOfPackages\nFROM Client c\nLEFT JOIN (\n    SELECT Recipient, COUNT(*) AS ReceivedPackages\n    FROM Package\n    GROUP BY Recipient\n) pkg_count ON c.AccountNumber = pkg_count.Recipient\nWHERE COALESCE(pkg_count.ReceivedPackages, 0) = (\n    SELECT MIN(pkg_counts)\n    FROM (\n        SELECT COUNT(*) AS pkg_counts\n        FROM Package\n        GROUP BY Recipient\n        UNION ALL\n        SELECT 0\n        FROM Client\n        WHERE AccountNumber NOT IN (SELECT DISTINCT Recipient FROM Package)\n    ) sub\n)",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": true,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 5,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT Client.Name, COUNT(*) AS NumberOfPackages\nFROM Package\nJOIN Client ON Package.Recipient = Client.AccountNumber\nGROUP BY Client.Name\nHAVING COUNT(*) = (\n    SELECT MIN(PackageCount) FROM (\n        SELECT COUNT(*) AS PackageCount\n        FROM Package\n        GROUP BY Recipient\n    ) AS Counts\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 4,
+    "sql": "SELECT Client.Name, COUNT(*) AS Number_of_Packages_Received\nFROM Package\nJOIN Client ON Package.Recipient = Client.AccountNumber\nGROUP BY Client.AccountNumber, Client.Name\nHAVING COUNT(*) = (\n    SELECT MIN(PackageCount) FROM (\n        SELECT COUNT(*) AS PackageCount\n        FROM Package\n        GROUP BY Recipient\n    ) AS Counts\n)",
+    "score": 5.25,
+    "syntax_score": 3.0,
+    "schema_score": 1.25,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.25,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 3,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  },
+  {
+    "rank": 5,
+    "sql": "SELECT C.Name, COUNT(P.PackageNumber) AS NumberOfPackages\nFROM Client C\nLEFT JOIN Package P ON C.AccountNumber = P.Recipient\nGROUP BY C.Name\nORDER BY NumberOfPackages ASC\nLIMIT 1;",
+    "score": 5.25,
+    "syntax_score": 2.5,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "Who received least number of packages ? List client name and number of packages received by that client .",
+    "syntax_detail": {
+      "total": 2.5,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": true
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "COUNT",
+      "count_keyword_in_sql": true
+    }
+  }
+]

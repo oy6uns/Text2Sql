@@ -1,0 +1,101 @@
+[
+  {
+    "rank": 1,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nWHERE EXISTS (\n    SELECT 1\n    FROM performance_score ps\n    JOIN songs s ON ps.songs_id = s.id\n    WHERE ps.participant_id = p.id AND s.language = 'Croatian'\n)\nAND EXISTS (\n    SELECT 1\n    FROM performance_score ps\n    JOIN songs s ON ps.songs_id = s.id\n    WHERE ps.participant_id = p.id AND s.language = 'English'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 2,
+    "sql": "SELECT p.name, p.popularity\nFROM participants p\nWHERE EXISTS (\n    SELECT 1\n    FROM performance_score ps\n    JOIN songs s ON ps.songs_id = s.id\n    WHERE ps.participant_id = p.id AND s.language = 'Croatian'\n)\nAND EXISTS (\n    SELECT 1\n    FROM performance_score ps\n    JOIN songs s ON ps.songs_id = s.id\n    WHERE ps.participant_id = p.id AND s.language = 'English'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  },
+  {
+    "rank": 3,
+    "sql": "SELECT DISTINCT p.name, p.popularity\nFROM participants p\nJOIN performance_score ps ON p.id = ps.participant_id\nJOIN songs s ON ps.songs_id = s.id\nWHERE p.id IN (\n    SELECT participant_id\n    FROM performance_score ps1\n    JOIN songs s1 ON ps1.songs_id = s1.id\n    WHERE s1.language = 'Croatian'\n) AND p.id IN (\n    SELECT participant_id\n    FROM performance_score ps2\n    JOIN songs s2 ON ps2.songs_id = s2.id\n    WHERE s2.language = 'English'\n)",
+    "score": 5.75,
+    "syntax_score": 3.0,
+    "schema_score": 1.75,
+    "execution_score": 1.0,
+    "question": "What are the name and popularity of participants who have sung a song both in 'Croatian' language and in 'English' language?",
+    "syntax_detail": {
+      "total": 3.0,
+      "missing_quote": false,
+      "paren_unbalanced": false,
+      "missing_select_or_from": false,
+      "keyword_order_issue": false,
+      "agg_without_group_by": false
+    },
+    "schema_detail": {
+      "total": 1.75,
+      "unknown_tables": [],
+      "join_without_on": false,
+      "order_by_not_in_select": false,
+      "count_mismatch_with_question": false
+    },
+    "execution_detail": {
+      "total": 1.0,
+      "error": null,
+      "timed_out": false,
+      "row_count": 1,
+      "too_many_rows": false,
+      "question_type": "OTHER",
+      "count_keyword_in_sql": false
+    }
+  }
+]

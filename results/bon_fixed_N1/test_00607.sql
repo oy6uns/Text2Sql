@@ -1,0 +1,4 @@
+SELECT Type
+FROM book
+GROUP BY Type
+HAVING COUNT(Book_ID) >= 3;

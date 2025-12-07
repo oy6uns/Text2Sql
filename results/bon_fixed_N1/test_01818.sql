@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Code) FROM MovieTheaters;

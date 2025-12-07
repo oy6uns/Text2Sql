@@ -1,0 +1,5 @@
+SELECT Item
+FROM items
+GROUP BY Item
+ORDER BY COUNT(*) ASC
+LIMIT 1;

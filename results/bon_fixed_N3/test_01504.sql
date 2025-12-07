@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Id) FROM goods WHERE Food = 'cake';

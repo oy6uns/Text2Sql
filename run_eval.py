@@ -1,6 +1,6 @@
 # run_eval_dev_small.py (프로젝트 루트에 임시로)
 from pathlib import Path
-from src.text2sql.datasets.spider2_snow import evaluate_spider
+from src.text2sql.datasets.load_spider import evaluate_spider
 
 def main():
     # 이 파일은 src/run_eval.py 에 있으므로,

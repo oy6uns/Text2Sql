@@ -115,7 +115,7 @@ python -m src.run_eval
 각 예제당 best SQL 1개를 `.sql` 파일로 저장합니다.
 
 ```bash
-python -m src.text2sql.datasets.spider2_snow_submission
+python -m src.text2sql.datasets.spider_to_sql_fixed
 ```
 
 결과:
@@ -129,13 +129,13 @@ python -m src.text2sql.datasets.spider2_snow_submission
 각 예제당 5개 후보를 생성하고 BoN을 적용합니다.
 
 ```bash
-python -m src.text2sql.datasets.spider2_snow_submission_diverse
+python -m src.text2sql.datasets.spider_to_sql_diverse
 ```
 
 결과:
 
 - **최종 SQL**: `src/results/bon_mixed_N5/test_00000.sql`, ...
-- **후보/점수 JSON**: `src/results/bon_cache_diverse/test_00000.json`, ...
+- **후보/점수 JSON**: `src/results/bon_cache_mixed/test_00000.json`, ...
 
 ---
 

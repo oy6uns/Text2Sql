@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 from typing import List, Optional
 
-from src.text2sql.datasets.spider2_snow import (
+from src.text2sql.datasets.load_spider import (
     SpiderExample,
     build_schema_text_from_ddl,
     load_spider_examples,
@@ -46,7 +46,7 @@ def export_spider_submission_fixed(
     if n_examples is not None:
         examples = examples[:n_examples]
 
-    # 후보 SQL + 점수 캐시 위치는 평가 스크립트(evaluate_spider2_snow)와 동일하게 사용
+    # 후보 SQL + 점수 캐시 위치
     # 프로젝트 루트의 src/results/bon_cache 아래에 저장
     # dataset_root == <project_root>/spider_data 이므로, parent()가 project_root
     project_root = dataset_root.parent
@@ -67,7 +67,7 @@ def export_spider_submission_fixed(
         schema_text = build_schema_text_from_ddl(dataset_root, ex.db_id)
 
         # 스키마가 너무 크면 LLM 호출을 스킵 (토큰 한도 보호)
-        from .spider2_snow import MAX_SCHEMA_CHARS_FOR_LLM  # lazy import to avoid cycles
+        from .load_spider import MAX_SCHEMA_CHARS_FOR_LLM  # lazy import to avoid cycles
 
         if len(schema_text) > MAX_SCHEMA_CHARS_FOR_LLM:
             print(
@@ -130,7 +130,7 @@ def main() -> None:
     """
     간단 CLI:
 
-    python -m src.text2sql.datasets.spider2_snow_submission
+    python -m src.text2sql.datasets.spider_to_sql_fixed
 
     을 실행하면, 프로젝트 루트의 `spider_data` 폴더를
     Spider/Spider2 계열 데이터셋 루트로 가정하고,
@@ -145,13 +145,8 @@ def main() -> None:
     dataset_root = project_root / "spider_data"
 
     # src 폴더 내부에 submission 결과를 저장할 디렉터리
-    # 예: src/results/spider2_snow/submissions/bon_fixed_N1
-    submission_dir = (
-        project_root
-        / "src"
-        / "results"
-        / "bon_fixed_N10"
-    )
+    # 예: src/results/bon_fixed_N5
+    submission_dir = project_root / "src" / "results" / "bon_fixed_N5"
 
     print(f"[SUBMIT] project_root   = {project_root}", flush=True)
     print(f"[SUBMIT] dataset_root   = {dataset_root}", flush=True)
@@ -161,7 +156,7 @@ def main() -> None:
         dataset_root=dataset_root,
         submission_dir=submission_dir,
         n_examples=None,   # 전체 사용
-        n_candidates=10,
+        n_candidates=5,
         mode="fixed",
     )
 

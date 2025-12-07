@@ -15,7 +15,7 @@ from pathlib import Path
 import json
 from typing import List
 
-from src.text2sql.datasets.spider2_snow import (
+from src.text2sql.datasets.load_spider import (
     SpiderExample,
     build_schema_text_from_ddl,
     load_spider_examples,
@@ -61,8 +61,8 @@ def main() -> None:
     examples: List[SpiderExample] = load_spider_examples(dataset_root)
 
     # 후보 SQL + 점수 캐시 (mixed-P1=1,P2=2,P3=2) 저장 디렉터리
-    # 프로젝트 루트의 src/results/bon_cache_diverse 아래에 저장
-    cache_root = project_root / "src" / "results" / "bon_cache_diverse"
+    # 프로젝트 루트의 src/results/bon_cache_mixed 아래에 저장
+    cache_root = project_root / "src" / "results" / "bon_cache_mixed"
 
     def _get_cache_path(example: SpiderExample) -> Path:
         dir_path = cache_root
@@ -78,7 +78,7 @@ def main() -> None:
         schema_text = build_schema_text_from_ddl(dataset_root, ex.db_id)
 
         # 스키마가 너무 크면 LLM 호출을 스킵
-        from .spider2_snow import MAX_SCHEMA_CHARS_FOR_LLM  # lazy import
+        from .load_spider import MAX_SCHEMA_CHARS_FOR_LLM  # lazy import
 
         if len(schema_text) > MAX_SCHEMA_CHARS_FOR_LLM:
             print(
